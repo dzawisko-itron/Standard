@@ -1,0 +1,40 @@
+////
+// @FILE:         _setup.mnu
+// @DESCRIPTION:  Interfaces
+//
+
+SETUP(USB) {
+  rxi = C; 
+  txi = Y; 
+  rxb = 1250000; 
+}
+
+SETUP(SYSTEM) { 
+  calibrate=n; 
+  startup=none;
+  test=hidetouchareas;
+}
+
+SETUP(I2CM) {
+  active  = m;
+  end     = \\FF;
+  speed   = 100;
+  encode  = sd;
+  rxi     = y;
+  txi     = y;
+  repstart= y;
+}
+
+// K10 out - internal - pwm chip reset
+// K16 in  - internal - overcurrent
+// K18 out - CN4_6    - pump2 - right
+// K29 out - CN4_4    - pump1 - left
+SETUP(KEYIO) {
+  active  = \\20050400;
+  inp     = \\00010000;
+  trig    = \\00010000;
+  edge    = \\00000000;
+}
+
+LOAD(K10, 1);
+WAIT(100);

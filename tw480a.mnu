@@ -1,20 +1,14 @@
-// Menu file for Itron TFT module
+////
+// Standard Oven Application
+//
+//
+// Copyright (C) 2020 Itron (U.K.) Ltd. All Rights Reserved
+// 
+// @FILE:         tw480.mnu
+// @DESCRIPTION:  Main menu file
+// @VERSION:      ___________________________
+                  VAR(VERS_IPROG,"1.01",TXT);
+//
 
-SETUP(USB) {rxi = C; txi = Y; rxb = 1250000; }
-
-VAR(VERS_IPROG,"1.0",TXT);
-
-STYLE(pagestyle, Page) { back = Black; }
-STYLE(textstyle, Text) { font = Ascii16; col = White; }
-STYLE(drawstyle, Draw) { type = Box; back = Grey; col = White; width = 1; }
-
-PAGE(page1, pagestyle)
-{
-
-  
-  POSN(240, 136);
-  DRAW(box1, 100, 30, drawstyle);
-  TEXT(text1, "Hello World", textstyle);
-}
-
-SHOW(page1);
+INC("EMMC/f_init.mnu");
+RUN(f_Init);

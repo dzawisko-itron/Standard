@@ -1,0 +1,28 @@
+////
+// @FILE:         f_init.mnu
+// @DESCRIPTION:  Application initiation
+// 
+
+FUNC(f_Init) {
+
+  INC("EMMC/_inc.mnu");
+
+  RUN(f_InitInt);
+  
+  RUN(f_InitStart);
+}
+
+FUNC(f_InitInt) {
+
+
+}
+
+FUNC(f_InitStart) {
+
+  LOAD(TIMER0,500,0);  
+
+  SHOW(p_Splash);
+  
+  WAIT(1000);
+  RUN(f_ShowMain);
+}

@@ -1,0 +1,18 @@
+////
+// @FILE:         _inc.mnu
+// @DESCRIPTION:  Included files
+//
+
+// Settings
+INC("EMMC/_setup.mnu");
+INC("EMMC/_lib.mnu");
+INC("EMMC/_style.mnu");
+INC("EMMC/_var.mnu");
+
+// Pages
+INC("EMMC/p_main.mnu");
+INC("EMMC/p_menu.mnu");
+INC("EMMC/p_splash.mnu");
+
+// Functions
+INC("EMMC/f_main.mnu");

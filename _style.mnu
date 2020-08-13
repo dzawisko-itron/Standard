@@ -1,0 +1,21 @@
+////
+// @FILE:         _style.mnu
+// @DESCRIPTION:  Styles
+//
+
+// Pages
+STYLE(spStd,  page) {back="\\121212";}
+
+
+// Text
+//STYLE(st18, text) {font=fnLt18;col="\\c0c0c0";}
+//STYLE(st18l, text) {font=fnLt18;col="\\00FF00";}
+//STYLE(st24, text) {font=fnLt24;col="\\c0c0c0";}
+//STYLE(st24g, text) {font=fnLt24;col="\\32cd32";}
+//STYLE(st24t, text) {font=fnLt24;col="\\c0c0c0";opacity=50;}
+//STYLE(st24tg, text) {font=fnLt24;col="\\32cd32";opacity=50;}
+//STYLE(st32, text) {font=fnLt32;col="\\c0c0c0";}
+//STYLE(st40, text) {font=fnLt40;col="\\c0c0c0";}
+//STYLE(st48, text) {font=fnLt48;col="\\c0c0c0";}
+//STYLE(st128l, text){font=fnLt128;col="\\00FF00";}
+//STYLE(st128g, text){font=fnLt128;col="\\32cd32";}

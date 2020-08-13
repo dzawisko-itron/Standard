@@ -1,0 +1,9 @@
+////
+// @FILE:         p_splash.mnu
+// @DESCRIPTION:  Splash/Loading page
+//
+
+PAGE(p_Splash, spStd) {
+
+
+}

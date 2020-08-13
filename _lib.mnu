@@ -1,0 +1,17 @@
+////
+// @FILE:         _lib.mnu
+// @DESCRIPTION:  Application library
+//
+
+// Fonts
+//LIB(fnLt12,"EMMC/Ts12.fnt");
+//LIB(fnLt24,"EMMC/Ts24.fnt");
+//LIB(fnLt32,"EMMC/Ts32.fnt");
+//LIB(fnLt40,"EMMC/Ts40.fnt");
+//LIB(fnLt48,"EMMC/Ts48.fnt");
+//LIB(fnLt128,"EMMC/Ts128.fnt");
+
+// Image files
+//LIB(imLogo,"EMMC/tw480a.bmp");
+//LIB(imDbg,"SDHC/imDbg.bmp");
+//LIB(imMain,"SDHC/imMain.bmp");

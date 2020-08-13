@@ -1,0 +1,9 @@
+////
+// @FILE:         p_main.mnu
+// @DESCRIPTION:  Main page
+//
+
+PAGE(p_Main, spStd) {
+
+
+}
