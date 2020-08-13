@@ -19,10 +19,9 @@ FUNC(f_InitInt) {
 
 FUNC(f_InitStart) {
 
-  LOAD(TIMER0,500,0);  
-
   SHOW(p_Splash);
   
   WAIT(1000);
-  RUN(f_ShowMain);
+  
+  SHOW(p_Main);
 }

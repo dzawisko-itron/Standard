@@ -5,5 +5,10 @@
 
 PAGE(p_Main, spStd) {
 
-
+  
+  TEXT(tTop,"14:27",stTop,10,7);
+  
+  DRAW(dBar,480,45,sdBar,0,15);
+  IMG(iCog,imCog,siIcon,440,37);
+  TEXT(tBar,"Program 1",stBar,30,37);
 }

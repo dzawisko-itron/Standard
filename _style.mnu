@@ -3,64 +3,132 @@
 // @DESCRIPTION:  Styles
 //
 
-STRUCT(s_Col) {
+STRUCT(color) {
   
-  primary,      U32;
-  primaryVar,   U32;
-  secondary,    U32;
-  secondaryVar, U32;
-  background,   U32;
-  surface,      U32;
-  error,        U32;
-  onPrimary,    U32;
-  onSecondary,  U32;
-  onBackground, U32;
-  onSurface,    U32;
-  onError,      U32;
-  highEmph,     U32;
-  mediumEmph,   U32;
-  disabled,     U32;
+  prim,     U32;
+  primv,    U32;
+  sec,      U32;
+  secv,     U32;
+  bckg,     U32;
+  surf,     U32;
+  err,      U32;
+  onprim,   U32;
+  onsec,    U32;
+  onbckg,   U32;
+  onsurf,   U32;
+  onerr,    U32;
+  hemp,     U32;
+  memp,     U32;
+  disa,     U32;
+  hemp,     U32;
+  memp,     U32;
+  disa,     U32;
+  e2dp,     U32;
+  e4dp,     U32;
+  e6dp,     U32;
+  e8dp,     U32;
 }
 
-VAR(s_CL,0,s_Col);
-VAR(s_CD,0,s_Col);
+VAR(ct,0,color,10,3);
+VAR(c_T,1,U8); // colours type: light, dark, branded dark
+VAR(c_C,0,U8); // colours theme
 
-LOAD(s_CL.primary,\\6200EE);    //500
-LOAD(s_CL.primaryVar,\\3700B3);   //700
-LOAD(s_CL.secondary,\\03DAC6);    //200
-LOAD(s_CL.secondaryVar,\\018786); //900
-LOAD(s_CL.background,\\FFFFFF);
-LOAD(s_CL.surface,\\FFFFFF);
-LOAD(s_CL.error,\\B00020);
-LOAD(s_CL.onPrimary,\\FFFFFF);
-LOAD(s_CL.onSecondary,\\000000);
-LOAD(s_CL.onBackground,\\000000);
-LOAD(s_CL.onSurface,\\000000);
-LOAD(s_CL.onError,\\FFFFFF);
-LOAD(s_CL.highEmph,\\DE000000);
-LOAD(s_CL.mediumEmph,\\99000000);
-LOAD(s_CL.disabled,\\61000000);
+LOAD(ct.0.0.prim,\\6200EE);      //500
+LOAD(ct.0.0.primv,\\3700B3);   //700
+LOAD(ct.0.0.sec,\\03DAC6);    //200
+LOAD(ct.0.0.secv,\\018786); //900
+LOAD(ct.0.0.bckg,\\FFFFFF);
+LOAD(ct.0.0.surf,\\FFFFFF);
+LOAD(ct.0.0.err,\\B00020);
+LOAD(ct.0.0.onprim,\\FFFFFF);
+LOAD(ct.0.0.onsec,\\000000);
+LOAD(ct.0.0.onbckg,\\000000);
+LOAD(ct.0.0.onsurf,\\000000);
+LOAD(ct.0.0.onerr,\\FFFFFF);
+LOAD(ct.0.0.hemp,\\DE000000);
+LOAD(ct.0.0.memp,\\99000000);
+LOAD(ct.0.0.disa,\\61000000);
+LOAD(ct.0.0.e2dp,\\12000000);
+LOAD(ct.0.0.e4dp,\\16000000);
+LOAD(ct.0.0.e6dp,\\1C000000);
+LOAD(ct.0.0.e8dp,\\1E000000);
 
-LOAD(s_CD.primary,\\BB86FC);    //200
-LOAD(s_CD.primaryVar,\\3700B3);   //700
-LOAD(s_CD.secondary,\\03DAC6);    //200
-LOAD(s_CD.secondaryVar,\\03DAC6); //200
-LOAD(s_CD.background,\\121212);
-LOAD(s_CD.surface,\\121212);
-LOAD(s_CD.error,\\CF6679);
-LOAD(s_CD.onPrimary,\\000000);
-LOAD(s_CD.onSecondary,\\000000);
-LOAD(s_CD.onBackground,\\FFFFFF);
-LOAD(s_CD.onSurface,\\FFFFFF);
-LOAD(s_CD.onError,\\000000);
-LOAD(s_CD.highEmph,\\DEFFFFFF);
-LOAD(s_CD.mediumEmph,\\99FFFFFF);
-LOAD(s_CD.disabled,\\61FFFFFF);
+LOAD(ct.0.1.prim,\\BB86FC);      //200
+LOAD(ct.0.1.primv,\\3700B3);   //700
+LOAD(ct.0.1.sec,\\03DAC6);    //200
+LOAD(ct.0.1.secv,\\03DAC6); //200
+LOAD(ct.0.1.bckg,\\121212);
+LOAD(ct.0.1.surf,\\121212);
+LOAD(ct.0.1.err,\\CF6679);
+LOAD(ct.0.1.onprim,\\000000);
+LOAD(ct.0.1.onsec,\\000000);
+LOAD(ct.0.1.onbckg,\\FFFFFF);
+LOAD(ct.0.1.onsurf,\\FFFFFF);
+LOAD(ct.0.1.onerr,\\000000);
+LOAD(ct.0.1.hemp,\\DEFFFFFF);
+LOAD(ct.0.1.memp,\\99FFFFFF);
+LOAD(ct.0.1.disa,\\61FFFFFF);
+LOAD(ct.0.1.e2dp,\\12FFFFFF);
+LOAD(ct.0.1.e4dp,\\16FFFFFF);
+LOAD(ct.0.1.e6dp,\\1CFFFFFF);
+LOAD(ct.0.1.e8dp,\\1EFFFFFF);
+
+VAR(c_prim,0,U32);
+VAR(c_primv,0,U32);
+VAR(c_sec,0,U32);
+VAR(c_secv,0,U32);
+VAR(c_bckg,\\1f1f1f,U32);
+VAR(c_surf,0,U32);
+VAR(c_err,0,U32);
+VAR(c_onprim,0,U32);
+VAR(c_onsec,0,U32);
+VAR(c_onbckg,0,U32);
+VAR(c_onsurf,0,U32);
+VAR(c_onerr,0,U32);
+VAR(c_hemp,0,U32);
+VAR(c_memp,0,U32);
+VAR(c_disa,0,U32);
+VAR(c_e2dp,0,U32);
+VAR(c_e4dp,0,U32);
+VAR(c_e6dp,0,U32);
+VAR(c_e8dp,0,U32);
+
+LOAD(c_prim,ct.c_C.c_T.prim);
+LOAD(c_primv,ct.c_C.c_T.primv);
+LOAD(c_sec,ct.c_C.c_T.sec);
+LOAD(c_secv,ct.c_C.c_T.secv);
+LOAD(c_bckg,ct.c_C.c_T.bckg);
+LOAD(c_surf,ct.c_C.c_T.surf);
+LOAD(c_err,ct.c_C.c_T.err);
+LOAD(c_onprim,ct.c_C.c_T.onprim);
+LOAD(c_onsec,ct.c_C.c_T.onsec);
+LOAD(c_onbckg,ct.c_C.c_T.onbckg);
+LOAD(c_onsurf,ct.c_C.c_T.onsurf);
+LOAD(c_onerr,ct.c_C.c_T.onerr);
+LOAD(c_hemp,ct.c_C.c_T.hemp);
+LOAD(c_memp,ct.c_C.c_T.memp);
+LOAD(c_disa,ct.c_C.c_T.disa);
+LOAD(c_e2dp,ct.c_C.c_T.e2dp);
+LOAD(c_e4dp,ct.c_C.c_T.e4dp);
+LOAD(c_e6dp,ct.c_C.c_T.e6dp);
+LOAD(c_e8dp,ct.c_C.c_T.e8dp);
 
 
 // Pages
-STYLE(spStd,  page) {back="\\121212";}
+STYLE(spStd,  page) {back=0;}
+// Draw
+STYLE(sdBar,  draw) {type=B;width=0;back=0;currel=TL;}
+// Text
+STYLE(stTop,  text) {font=fnRr12;col=0;currel=CL;}
+STYLE(stBar,  text) {font=fnRm24;col=0;currel=CL;}
+// Image
+STYLE(siIcon, image){currel=CC;}
 
+
+LOAD(spStd.back,c_bckg);
+LOAD(sdBar.back,c_e6dp);
+LOAD(stTop.col,c_onbckg);
+LOAD(stBar.col,c_onbckg);
 
 // Text
 //STYLE(st18, text) {font=fnLt18;col="\\c0c0c0";}
