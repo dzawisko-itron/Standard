@@ -3,6 +3,61 @@
 // @DESCRIPTION:  Styles
 //
 
+STRUCT(s_Col) {
+  
+  primary,      U32;
+  primaryVar,   U32;
+  secondary,    U32;
+  secondaryVar, U32;
+  background,   U32;
+  surface,      U32;
+  error,        U32;
+  onPrimary,    U32;
+  onSecondary,  U32;
+  onBackground, U32;
+  onSurface,    U32;
+  onError,      U32;
+  highEmph,     U32;
+  mediumEmph,   U32;
+  disabled,     U32;
+}
+
+VAR(s_CL,0,s_Col);
+VAR(s_CD,0,s_Col);
+
+LOAD(s_CL.primary,\\6200EE);    //500
+LOAD(s_CL.primaryVar,\\3700B3);   //700
+LOAD(s_CL.secondary,\\03DAC6);    //200
+LOAD(s_CL.secondaryVar,\\018786); //900
+LOAD(s_CL.background,\\FFFFFF);
+LOAD(s_CL.surface,\\FFFFFF);
+LOAD(s_CL.error,\\B00020);
+LOAD(s_CL.onPrimary,\\FFFFFF);
+LOAD(s_CL.onSecondary,\\000000);
+LOAD(s_CL.onBackground,\\000000);
+LOAD(s_CL.onSurface,\\000000);
+LOAD(s_CL.onError,\\FFFFFF);
+LOAD(s_CL.highEmph,\\DE000000);
+LOAD(s_CL.mediumEmph,\\99000000);
+LOAD(s_CL.disabled,\\61000000);
+
+LOAD(s_CD.primary,\\BB86FC);    //200
+LOAD(s_CD.primaryVar,\\3700B3);   //700
+LOAD(s_CD.secondary,\\03DAC6);    //200
+LOAD(s_CD.secondaryVar,\\03DAC6); //200
+LOAD(s_CD.background,\\121212);
+LOAD(s_CD.surface,\\121212);
+LOAD(s_CD.error,\\CF6679);
+LOAD(s_CD.onPrimary,\\000000);
+LOAD(s_CD.onSecondary,\\000000);
+LOAD(s_CD.onBackground,\\FFFFFF);
+LOAD(s_CD.onSurface,\\FFFFFF);
+LOAD(s_CD.onError,\\000000);
+LOAD(s_CD.highEmph,\\DEFFFFFF);
+LOAD(s_CD.mediumEmph,\\99FFFFFF);
+LOAD(s_CD.disabled,\\61FFFFFF);
+
+
 // Pages
 STYLE(spStd,  page) {back="\\121212";}
 
