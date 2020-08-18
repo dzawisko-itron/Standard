@@ -5,14 +5,27 @@
 
 // Fonts
 LIB(fnRr12,"EMMC/fnRr12.fnt");
+LIB(fnRr14,"EMMC/fnRr14.fnt");
+LIB(fnRr16,"EMMC/fnRr16.fnt");
 LIB(fnRr24,"EMMC/fnRr24.fnt");
 LIB(fnRr32,"EMMC/fnRr32.fnt");
+LIB(fnRr48,"EMMC/fnRr48.fnt");
+LIB(fnRr64,"EMMC/fnRr64.fnt");
+LIB(fnRr96,"EMMC/fnRr96.fnt");
 
+LIB(fnRm14,"EMMC/fnRm14.fnt");
 LIB(fnRm24,"EMMC/fnRm24.fnt");
+
+LIB(fnRl48,"EMMC/fnRl48.fnt");
+LIB(fnRl96,"EMMC/fnRl96.fnt");
+
 
 // Image files
 LIB(imCog,"EMMC/imCog24.png");
 LIB(imMenu,"EMMC/imMenu24.png");
 LIB(imMenuv,"EMMC/imMenuv24.png");
+LIB(imStart,"EMMC/imStart24.png");
+LIB(imStop,"EMMC/imStop24.png");
+
 LIB(imUsbS,"EMMC/imUsb12.png");
 LIB(imWifiS,"EMMC/imWifi12.png");

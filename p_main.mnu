@@ -17,7 +17,22 @@ PAGE(p_Main, spStd) {
   TEXT(tBar,"Program 1",stBar,60,37);
   
   // Sections
-  DRAW(dBoxH,200,198,sdBoxH,140,67);
+  DRAW(dBoxH,240,198,sdBox,120,67);
+  DRAW(dBoxL,106,198,sdBox,7,67);
+  DRAW(dBoxR,106,198,sdBox,367,67);
+  
+  // Middle
+  TEXT(tTempT,"Current Temperature",stSubt,127,74);
+  TEXT(tTemp,"260",stXxl,240,135);
+  
+  TEXT(tTargT,"Target Temperature",stSubt,127,170);
+  TEXT(tTarg,"260",stXl,240,210);
+  // Sec button
+  DRAW(dButC1,46,46,sdButC,368,220);
+  DRAW(dButB2,46,46,sdButB,398,220);
+  DRAW(dButC3,46,46,sdButC,428,220);
+  IMG(iStart,imStart,siIcon,388,242);
+  TEXT(tButC,"START",stBut,428,243);
   
   
 }

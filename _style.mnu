@@ -23,11 +23,12 @@ STRUCT(color) {
   hemp,     U32;
   memp,     U32;
   disa,     U32;
+  e1dp,     U32;
   e2dp,     U32;
   e4dp,     U32;
   e6dp,     U32;
   e8dp,     U32;
-//  12dp,     U32;
+  e12dp,    U32;
 }
 
 VAR(ct,0,color,10,3);
@@ -49,11 +50,12 @@ LOAD(ct.0.0.onerr,\\FFFFFF);
 LOAD(ct.0.0.hemp,\\DE000000);
 LOAD(ct.0.0.memp,\\99000000);
 LOAD(ct.0.0.disa,\\61000000);
+LOAD(ct.0.0.e1dp,\\0D000000);
 LOAD(ct.0.0.e2dp,\\12000000);
 LOAD(ct.0.0.e4dp,\\16000000);
 LOAD(ct.0.0.e6dp,\\1C000000);
 LOAD(ct.0.0.e8dp,\\1E000000);
-//LOAD(ct.0.0.12dp,\\24000000);
+LOAD(ct.0.0.e12dp,\\24000000);
 
 LOAD(ct.0.1.prim,\\BB86FC);      //200
 LOAD(ct.0.1.primv,\\3700B3);   //700
@@ -70,11 +72,12 @@ LOAD(ct.0.1.onerr,\\000000);
 LOAD(ct.0.1.hemp,\\DEFFFFFF);
 LOAD(ct.0.1.memp,\\99FFFFFF);
 LOAD(ct.0.1.disa,\\61FFFFFF);
+LOAD(ct.0.1.e1dp,\\0DFFFFFF);
 LOAD(ct.0.1.e2dp,\\12FFFFFF);
 LOAD(ct.0.1.e4dp,\\16FFFFFF);
 LOAD(ct.0.1.e6dp,\\1CFFFFFF);
 LOAD(ct.0.1.e8dp,\\1EFFFFFF);
-//LOAD(ct.0.1.12dp,\\24FFFFFF);
+LOAD(ct.0.1.e12dp,\\24FFFFFF);
 
 VAR(c_prim,0,U32);
 VAR(c_primv,0,U32);
@@ -91,11 +94,12 @@ VAR(c_onerr,0,U32);
 VAR(c_hemp,0,U32);
 VAR(c_memp,0,U32);
 VAR(c_disa,0,U32);
+VAR(c_e1dp,0,U32);
 VAR(c_e2dp,0,U32);
 VAR(c_e4dp,0,U32);
 VAR(c_e6dp,0,U32);
 VAR(c_e8dp,0,U32);
-//VAR(c_12dp,0,U32);
+VAR(c_e12dp,0,U32);
 
 LOAD(c_prim,ct.c_C.c_T.prim);
 LOAD(c_primv,ct.c_C.c_T.primv);
@@ -112,11 +116,12 @@ LOAD(c_onerr,ct.c_C.c_T.onerr);
 LOAD(c_hemp,ct.c_C.c_T.hemp);
 LOAD(c_memp,ct.c_C.c_T.memp);
 LOAD(c_disa,ct.c_C.c_T.disa);
+LOAD(c_e1dp,ct.c_C.c_T.e1dp);
 LOAD(c_e2dp,ct.c_C.c_T.e2dp);
 LOAD(c_e4dp,ct.c_C.c_T.e4dp);
 LOAD(c_e6dp,ct.c_C.c_T.e6dp);
 LOAD(c_e8dp,ct.c_C.c_T.e8dp);
-//LOAD(c_12dp,ct.c_C.c_T.12dp);
+LOAD(c_e12dp,ct.c_C.c_T.e12dp);
 
 // Pages
 STYLE(spStd,  page) {back=0;}
@@ -128,24 +133,33 @@ STYLE(sdDraw, draw) {type=B;width=0;back=0;currel=TL;}
 STYLE(sdDrawH,draw) {type=B;width=0;back=0;currel=TL;}
 STYLE(sdMenu, draw) {type=B;width=0;back=0;currel=TL;}
 STYLE(sdMenuH,draw) {type=B;width=0;back=0;currel=TL;}
+STYLE(sdButB, draw) {type=B;width=0;back=0;currel=TL;}
+STYLE(sdButC, draw) {type=E;width=0;back=0;currel=TL;}
 // Text
 STYLE(stTop,  text) {font=fnRr12;col=0;currel=CL;}
 STYLE(stBar,  text) {font=fnRm24;col=0;currel=CL;}
-STYLE(stXxl,  text) {font=fnRm24;col=0;currel=CL;}
-STYLE(stXl,   text) {font=fnRm24;col=0;currel=CL;}
-STYLE(stL,    text) {font=fnRm24;col=0;currel=CL;}
-STYLE(stM,    text) {font=fnRm24;col=0;currel=CL;}
+STYLE(stBut,  text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
+STYLE(stXxl,  text) {font=fnRl96;col=0;currel=CC;xSpace=10;}
+STYLE(stXl,   text) {font=fnRl48;col=0;currel=CC;xSpace=5;}
+STYLE(stL,    text) {font=fnRr32;col=0;currel=CC;xSpace=1;}
+STYLE(stSubt, text) {font=fnRr14;col=0;currel=TL;xSpace=1;}
 // Image
 STYLE(siIcon, image){currel=CC;}
 
 
 LOAD(spStd.back,c_bckg);
 LOAD(sdBar.back,c_e6dp);
-LOAD(sdBox.back,c_e2dp);
-LOAD(sdBoxH.back,c_e4dp);
+LOAD(sdBox.back,c_e1dp);
+LOAD(sdBoxH.back,c_e2dp);
+LOAD(sdButC.back,c_sec);
+LOAD(sdButB.back,c_sec);
 LOAD(stTop.col,c_onbckg);
 LOAD(stBar.col,c_onbckg);
-
+LOAD(stBut.col,c_onsec);
+LOAD(stXxl.col,c_onsurf);
+LOAD(stXl.col,c_onsurf);
+LOAD(stL.col,c_onsurf);
+LOAD(stSubt.col,c_memp);
 // Text
 //STYLE(st18, text) {font=fnLt18;col="\\c0c0c0";}
 //STYLE(st18l, text) {font=fnLt18;col="\\00FF00";}
