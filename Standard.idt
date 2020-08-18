@@ -4,8 +4,8 @@ Standard.idt
 tw480a.mnu,0
 _inc.mnu,0
 _lib.mnu,0
-_setup.mnu,24
-_style.mnu,1569
+_setup.mnu,0
+_style.mnu,180
 _var.mnu,0
 f_init.mnu,0
 f_main.mnu,0
@@ -14,6 +14,10 @@ p_menu.mnu,0
 p_splash.mnu,0
 *Images
 imCog24.png
+imMenu24.png
+imMenuv24.png
+imUsb12.png
+imWifi12.png
 *Fonts
 fnRm24.fnt
 fnRr12.fnt
@@ -22,6 +26,6 @@ fnRr32.fnt
 *Disp
 1
 *Time
-119
+156
 *Last
-root
+_style.mnu

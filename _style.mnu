@@ -27,6 +27,7 @@ STRUCT(color) {
   e4dp,     U32;
   e6dp,     U32;
   e8dp,     U32;
+//  12dp,     U32;
 }
 
 VAR(ct,0,color,10,3);
@@ -52,6 +53,7 @@ LOAD(ct.0.0.e2dp,\\12000000);
 LOAD(ct.0.0.e4dp,\\16000000);
 LOAD(ct.0.0.e6dp,\\1C000000);
 LOAD(ct.0.0.e8dp,\\1E000000);
+//LOAD(ct.0.0.12dp,\\24000000);
 
 LOAD(ct.0.1.prim,\\BB86FC);      //200
 LOAD(ct.0.1.primv,\\3700B3);   //700
@@ -72,6 +74,7 @@ LOAD(ct.0.1.e2dp,\\12FFFFFF);
 LOAD(ct.0.1.e4dp,\\16FFFFFF);
 LOAD(ct.0.1.e6dp,\\1CFFFFFF);
 LOAD(ct.0.1.e8dp,\\1EFFFFFF);
+//LOAD(ct.0.1.12dp,\\24FFFFFF);
 
 VAR(c_prim,0,U32);
 VAR(c_primv,0,U32);
@@ -92,6 +95,7 @@ VAR(c_e2dp,0,U32);
 VAR(c_e4dp,0,U32);
 VAR(c_e6dp,0,U32);
 VAR(c_e8dp,0,U32);
+//VAR(c_12dp,0,U32);
 
 LOAD(c_prim,ct.c_C.c_T.prim);
 LOAD(c_primv,ct.c_C.c_T.primv);
@@ -112,21 +116,33 @@ LOAD(c_e2dp,ct.c_C.c_T.e2dp);
 LOAD(c_e4dp,ct.c_C.c_T.e4dp);
 LOAD(c_e6dp,ct.c_C.c_T.e6dp);
 LOAD(c_e8dp,ct.c_C.c_T.e8dp);
-
+//LOAD(c_12dp,ct.c_C.c_T.12dp);
 
 // Pages
 STYLE(spStd,  page) {back=0;}
 // Draw
 STYLE(sdBar,  draw) {type=B;width=0;back=0;currel=TL;}
+STYLE(sdBox,  draw) {type=B;width=0;back=0;currel=TL;}
+STYLE(sdBoxH, draw) {type=B;width=0;back=0;currel=TL;}
+STYLE(sdDraw, draw) {type=B;width=0;back=0;currel=TL;}
+STYLE(sdDrawH,draw) {type=B;width=0;back=0;currel=TL;}
+STYLE(sdMenu, draw) {type=B;width=0;back=0;currel=TL;}
+STYLE(sdMenuH,draw) {type=B;width=0;back=0;currel=TL;}
 // Text
 STYLE(stTop,  text) {font=fnRr12;col=0;currel=CL;}
 STYLE(stBar,  text) {font=fnRm24;col=0;currel=CL;}
+STYLE(stXxl,  text) {font=fnRm24;col=0;currel=CL;}
+STYLE(stXl,   text) {font=fnRm24;col=0;currel=CL;}
+STYLE(stL,    text) {font=fnRm24;col=0;currel=CL;}
+STYLE(stM,    text) {font=fnRm24;col=0;currel=CL;}
 // Image
 STYLE(siIcon, image){currel=CC;}
 
 
 LOAD(spStd.back,c_bckg);
 LOAD(sdBar.back,c_e6dp);
+LOAD(sdBox.back,c_e2dp);
+LOAD(sdBoxH.back,c_e4dp);
 LOAD(stTop.col,c_onbckg);
 LOAD(stBar.col,c_onbckg);
 

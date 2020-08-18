@@ -12,3 +12,7 @@ LIB(fnRm24,"EMMC/fnRm24.fnt");
 
 // Image files
 LIB(imCog,"EMMC/imCog24.png");
+LIB(imMenu,"EMMC/imMenu24.png");
+LIB(imMenuv,"EMMC/imMenuv24.png");
+LIB(imUsbS,"EMMC/imUsb12.png");
+LIB(imWifiS,"EMMC/imWifi12.png");
