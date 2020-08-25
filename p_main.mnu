@@ -17,22 +17,53 @@ PAGE(p_Main, spStd) {
   TEXT(tBar,"Program 1",stBar,60,37);
   
   // Sections
-  DRAW(dBoxH,240,198,sdBox,120,67);
+  
+  // Middle Top
+  DRAW(dBoxT,240,110,sdBoxH,120,67);
+  TEXT(tTempT,"Current temperature",stSubt,127,72);
+  TEXT(tTemp,"260",stXxl,220,137);
+  TEXT(tTempC,"\\B0C",stUr,320,141);
+  
+  // Middle Bottom
+  DRAW(dBoxB,240, 81,sdBox,120,184);
+  TEXT(tTargT,"Target temperature",stSubt,127,189);
+  TEXT(tTarg,"260",stXl,220,240);
+  TEXT(tTargC,"\\B0C",stUs,295,247);
+  
+  DRAW(dBMin,35,35,sdButP,127,223);
+  IMG(iBMinl,imBtnlb,siTL,127,223);
+  IMG(iBMinlo,imBtnlw,siTLe1,127,223);
+  IMG(iBMinr,imBtnrb,siTL,157,223);
+  IMG(iBMinro,imBtnrw,siTLe1,157,223);
+  IMG(iBMin,imMinus,siIcon,143,240);
+  
+  DRAW(dBPlus,35,35,sdButP,318,223);
+  IMG(iBPlusl,imBtnlb,siTL,318,223);
+  IMG(iBPluslo,imBtnlw,siTLe1,318,223);
+  IMG(iBPlusr,imBtnrb,siTL,348,223);
+  IMG(iBPlusro,imBtnrw,siTLe1,348,223);
+  IMG(iBPlus,imPlus,siIcon,334,240);
+  
+  // Left
   DRAW(dBoxL,106,198,sdBox,7,67);
+  // Prim button
+  DRAW(dBDet,92,35,sdButP, 14,223);
+  IMG(iBDetl,imBtnlb,siTL, 14,223);
+  IMG(iBDetlo,imBtnlw,siTLe1,14,223);
+  IMG(iBDetr,imBtnrb,siTL,101,223);
+  IMG(iBDetro,imBtnrw,siTLe1,101,223);
+  //IMG(iBDet,imStart,siIcon,30,240);
+  TEXT(tBDet,"DETAILS",stButP,60,241);
+  
+  // Right
   DRAW(dBoxR,106,198,sdBox,367,67);
-  
-  // Middle
-  TEXT(tTempT,"Current Temperature",stSubt,127,74);
-  TEXT(tTemp,"260",stXxl,240,135);
-  
-  TEXT(tTargT,"Target Temperature",stSubt,127,170);
-  TEXT(tTarg,"260",stXl,240,210);
   // Sec button
-  DRAW(dButC1,46,46,sdButC,368,220);
-  DRAW(dButB2,46,46,sdButB,398,220);
-  DRAW(dButC3,46,46,sdButC,428,220);
-  IMG(iStart,imStart,siIcon,388,242);
-  TEXT(tButC,"START",stBut,428,243);
-  
+  DRAW(dBPlay,92,45,sdButS,374,213);
+  IMG(iBPlayl,imBtnclb,siTL,374,213);
+  IMG(iBPlaylo,imBtnclw,siTLe4,374,213);
+  IMG(iBPlayr,imBtncrb,siTL,444,213);
+  IMG(iBPlayro,imBtncrw,siTLe4,444,213);
+  IMG(iBPlay,imStart,siIcon,390,235);
+  TEXT(tBPlay,"START",stButS,426,236);
   
 }

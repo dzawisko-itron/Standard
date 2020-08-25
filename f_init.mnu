@@ -19,6 +19,9 @@ FUNC(f_InitInt) {
 
 FUNC(f_InitStart) {
 
+  RUN(_cReloadCol);
+  RUN(_cReloadTheme);
+
   SHOW(p_Splash);
   
   WAIT(1000);

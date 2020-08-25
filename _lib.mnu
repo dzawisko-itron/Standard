@@ -17,15 +17,32 @@ LIB(fnRm14,"EMMC/fnRm14.fnt");
 LIB(fnRm24,"EMMC/fnRm24.fnt");
 
 LIB(fnRl48,"EMMC/fnRl48.fnt");
+LIB(fnRl64,"EMMC/fnRl64.fnt");
 LIB(fnRl96,"EMMC/fnRl96.fnt");
 
 
 // Image files
+// 24px icons
 LIB(imCog,"EMMC/imCog24.png");
 LIB(imMenu,"EMMC/imMenu24.png");
 LIB(imMenuv,"EMMC/imMenuv24.png");
+
 LIB(imStart,"EMMC/imStart24.png");
 LIB(imStop,"EMMC/imStop24.png");
-
+LIB(imMinus,"EMMC/imMinus24.png");
+LIB(imPlus,"EMMC/imPlus24.png");
+// 12px icons
 LIB(imUsbS,"EMMC/imUsb12.png");
 LIB(imWifiS,"EMMC/imWifi12.png");
+// Buttons
+LIB(imBtnclb,"EMMC/imBtnclb.png");
+LIB(imBtnclw,"EMMC/imBtnclw.png");
+LIB(imBtncrb,"EMMC/imBtncrb.png");
+LIB(imBtncrw,"EMMC/imBtncrw.png");
+LIB(imBtnlb,"EMMC/imBtnlb.png");
+LIB(imBtnlw,"EMMC/imBtnlw.png");
+LIB(imBtnrb,"EMMC/imBtnrb.png");
+LIB(imBtnrw,"EMMC/imBtnrw.png");
+
+
+
