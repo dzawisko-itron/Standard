@@ -137,7 +137,7 @@ LOAD(_cl.18.8,\\121212);
 // primary colour
 VAR(_cp,4,U8);
 // secondary colour
-VAR(_cs,13,U8);
+VAR(_cs,14,U8);
 // theme type
 // 0 - light
 // 1 - dark
@@ -146,6 +146,7 @@ VAR(_ct,1,U8);
 
 // elevation base
 VAR(_cwhite,\\FFFFFF,U32);
+VAR(_cblack,\\000000,U32);
 // errors
 VAR(_cerr,0,U32,3);     LOAD(_cerr.0,\\B00020);   LOAD(_cerr.1,\\CF6679);   LOAD(_cerr.2,\\CF6679); 
 VAR(_conerr,0,U32,3);   LOAD(_conerr.0,\\FFFFFF); LOAD(_conerr.1,\\000000); LOAD(_conerr.2,\\000000); 
@@ -158,6 +159,7 @@ VAR(_consurf,0,U32,3);  LOAD(_consurf.0,\\000000);LOAD(_consurf.1,\\FFFFFF);LOAD
 VAR(_cprim,0,U32,3);
 VAR(_cprimv,0,U32,3);
 VAR(_conprim,0,U32,3);
+VAR(_conprimv,0,U32,3);
 // secondary
 VAR(_csec,0,U32,3);
 VAR(_csecv,0,U32,3);
@@ -170,20 +172,23 @@ FUNC(_cReloadCol) {
   LOAD(_csurf.2,_cl._cp.8); 
   // primary
   LOAD(_cprim.0,_cl._cp.2);   LOAD(_cprim.1,_cl._cp.0);   LOAD(_cprim.2,_cl._cp.0);
-  LOAD(_cprimv.0,_cl._cp.4);  LOAD(_cprimv.1,_cl._cp.4);  LOAD(_cprimv.2,_cl._cp.4);
+  LOAD(_cprimv.0,_cl._cp.6);  LOAD(_cprimv.1,_cl._cp.6);  LOAD(_cprimv.2,_cl._cp.6);
   LOAD(_conprim.0,_cl._cp.3); LOAD(_conprim.1,_cl._cp.1); LOAD(_conprim.2,_cl._cp.1);
+  LOAD(_conprimv.0,_cl._cp.7);LOAD(_conprimv.1,_cl._cp.7);LOAD(_conprimv.2,_cl._cp.7);
   // secondary
-  LOAD(_csec.0,_cl._cs.0);    LOAD(_csec.1,_cl._cs.0);    LOAD(_csec.2,_cl._cs.0);
+  LOAD(_csec.0,_cl._cs.2);    LOAD(_csec.1,_cl._cs.0);    LOAD(_csec.2,_cl._cs.0);
   LOAD(_csecv.0,_cl._cs.6);   LOAD(_csecv.1,_cl._cs.0);   LOAD(_csecv.2,_cl._cs.0);
-  LOAD(_consec.0,_cl._cs.1);  LOAD(_consec.1,_cl._cs.1);  LOAD(_consec.2,_cl._cs.1);
+  LOAD(_consec.0,_cl._cs.3);  LOAD(_consec.1,_cl._cs.1);  LOAD(_consec.2,_cl._cs.1);
 }
 
 // Opacity
 // Text opacity
+VAR(_csemp,100,U8);
 VAR(_chemp,87,U8);
 VAR(_cmemp,60,U8);
 VAR(_cdemp,38,U8);
 // Elevation opacity
+VAR(_ce0,100,U8);
 VAR(_ce1,5,U8);
 VAR(_ce2,7,U8);
 VAR(_ce3,8,U8);
@@ -194,15 +199,15 @@ VAR(_ce12,14,U8);
 VAR(_ce16,15,U8);
 VAR(_ce24,16,U8);
 
-
 // Styles
-
 // Pages
 STYLE(spStd,  page) {back=0;}
-// Draw
+// Drawings
+STYLE(sdTop,  draw) {type=B;width=0;back=0;currel=TL;}
 STYLE(sdBar,  draw) {type=B;width=0;back=0;currel=TL;}
 STYLE(sdBox,  draw) {type=B;width=0;back=0;currel=TL;}
 STYLE(sdBoxH, draw) {type=B;width=0;back=0;currel=TL;}
+STYLE(sdBoxE,  draw){type=B;width=0;back=\\B00020;currel=TL;}
 STYLE(sdDraw, draw) {type=B;width=0;back=0;currel=TL;}
 STYLE(sdDrawH,draw) {type=B;width=0;back=0;currel=TL;}
 STYLE(sdMenu, draw) {type=B;width=0;back=0;currel=TL;}
@@ -212,58 +217,262 @@ STYLE(sdButS, draw) {type=B;width=0;back=0;currel=TL;}
 // Text
 STYLE(stTop,  text) {font=fnRr12;col=0;currel=CL;}
 STYLE(stBar,  text) {font=fnRm24;col=0;currel=CL;}
+// on buttons
+STYLE(stBop, text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
+STYLE(stBos, text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
+STYLE(stBp, text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
+STYLE(stBs, text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
 
-STYLE(stButP, text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
-STYLE(stButS, text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
-
-STYLE(stXxl,  text) {font=fnRl96;col=0;currel=CC;xSpace=10;}
-STYLE(stXl,   text) {font=fnRl64;col=0;currel=CC;xSpace=1;}
+STYLE(stXxl,  text) {font=fnRl80;col=0;currel=CC;}
+STYLE(stXl,   text) {font=fnRl54;col=0;currel=CC;}
 STYLE(stL,    text) {font=fnRl48;col=0;currel=CC;xSpace=1;}
 STYLE(stSubt, text) {font=fnRr14;col=0;currel=TL;xSpace=1;}
+// Units
+STYLE(stUr,    text) {font=fnRl48;col=0;currel=CC;xSpace=-4;}
+STYLE(stUs,    text) {font=fnRl24;col=0;currel=CC;xSpace=-4;}
 
-STYLE(stUr,    text) {font=fnRl64;col=0;currel=CC;xSpace=-6;}
-STYLE(stUs,    text) {font=fnRl48;col=0;currel=CC;xSpace=-4;}
+// Text Icons
+// 15 px
+STYLE(stI15t,  text) {font=fnIc15;col=0;currel=CC;}
+// 24 px
+STYLE(stI24b,  text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24p,  text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24s,  text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24op, text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24os, text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24ob, text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24e, text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24oe, text) {font=fnIc24;col=0;currel=CC;}
+// Text Buttons
+// 35 px
+STYLE(stB35p,  text) {font=fnBt35;col=0;currel=TL;}
+STYLE(stB35s,  text) {font=fnBt35;col=0;currel=TL;}
+STYLE(stB35po, text) {font=fnBt35;col=0;currel=TL;}
+STYLE(stB35so, text) {font=fnBt35;col=0;currel=TL;}
+// 45 px
+STYLE(stB45p,  text) {font=fnBt45;col=0;currel=TL;}
+STYLE(stB45s,  text) {font=fnBt45;col=0;currel=TL;}
+STYLE(stB45po, text) {font=fnBt45;col=0;currel=TL;}
+STYLE(stB45so, text) {font=fnBt45;col=0;currel=TL;}
+// Text Shapes
+STYLE(stS10,   text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
+STYLE(stS109,  text) {font=fnSh1e;col=0;currel=TL;opacity=38;rotate=90;}
+STYLE(stS10h,   text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
+STYLE(stS10h9,  text) {font=fnSh1e;col=0;currel=TL;opacity=38;rotate=90;}
+STYLE(stS10s,  text) {font=fnSh10;col=0;currel=TL;opacity=50;}
+STYLE(stS10s9, text) {font=fnSh10;col=0;currel=TL;opacity=50;rotate=90;}
+STYLE(stS10E,  text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
+STYLE(stS10E9, text) {font=fnSh1e;col=0;currel=TL;opacity=38;rotate=90;}
+// Text Errors
+STYLE(stS10fe,  text) {font=fnSh1f;col=0;currel=TL;}
+STYLE(stS10fe9, text) {font=fnSh1f;col=0;currel=TL;rotate=90;}
+STYLE(stXxlE,  text) {font=fnRl80;col=0;currel=CC;}
+STYLE(stXlE,   text) {font=fnRl54;col=0;currel=CC;}
+STYLE(stLE,    text) {font=fnRl48;col=0;currel=CC;xSpace=1;}
+STYLE(stSubtE, text) {font=fnRr14;col=0;currel=TL;xSpace=1;}
+STYLE(stUrE,   text) {font=fnRl48;col=0;currel=CC;xSpace=-4;}
+STYLE(stUsE,   text) {font=fnRl24;col=0;currel=CC;xSpace=-4;}
+
 // Image
 STYLE(siIcon, image){currel=CC;}
 STYLE(siTL,   image){currel=TL;}
 STYLE(siTLe1, image){currel=TL;opacity=5;}
 STYLE(siTLe4, image){currel=TL;opacity=9;}
 
+VAR(_cpointer,"_cReloadT",TXT);
 FUNC(_cReloadTheme) {
+  
+  LOAD(_cpointer,"_cReloadT",_ct);
+
+  RUN(_cpointer);
+}
+
+// Light Theme
+FUNC(_cReloadT0) {
 
   // background
   LOAD(spStd.back,_cbckg._ct);
-  LOAD(stTop.col,_conbckg._ct);
+  // top
+  LOAD(sdTop.back,_cprimv._ct);
+  LOAD(stTop.col,_conprimv._ct);
+  LOAD(stI15t.col,_conprimv._ct);
   // top bar
-  LOAD(sdBar.back,_cwhite);     LOAD(sdBar.opacity,_ce6);
-  LOAD(stBar.col,_conbckg._ct);
-  // boxes
-  LOAD(sdBox.back,_cwhite);     LOAD(sdBox.opacity,_ce1);
-  LOAD(sdBoxH.back,_cwhite);    LOAD(sdBoxH.opacity,_ce4);
-  
+  LOAD(sdBar.back,_cprim);     LOAD(sdBar.opacity,_ce0);
+  LOAD(stBar.col,_conprim._ct);
+  LOAD(stI24b.col,_conprim._ct);
+  // section boxes
+  LOAD(sdBox.back,_cwhite);     LOAD(sdBox.opacity,_ce0);
+  LOAD(sdBoxH.back,_cwhite);    LOAD(sdBoxH.opacity,_ce0);
+  LOAD(sdBoxE.back,_cerr._ct);  LOAD(sdBoxE.opacity,_ce0);
+  // section shapes
+  LOAD(stS10.font,fnSh1e);   LOAD(stS10.col,_cblack);     LOAD(stS10.opacity,_cdemp);
+  LOAD(stS109.font,fnSh1e);  LOAD(stS109.col,_cblack);    LOAD(stS109.opacity,_cdemp);
+  LOAD(stS10h.font,fnSh1e);  LOAD(stS10h.col,_cblack);    LOAD(stS10h.opacity,_cdemp);
+  LOAD(stS10h9.font,fnSh1e); LOAD(stS10h9.col,_cblack);   LOAD(stS10h9.opacity,_cdemp);
+  LOAD(stS10E.font,fnSh1f);  LOAD(stS10E.col,_cerr._ct);  LOAD(stS10E.opacity,_csemp);
+  LOAD(stS10E9.font,fnSh1f); LOAD(stS10E9.col,_cerr._ct); LOAD(stS10E9.opacity,_csemp);
+  // section text
   LOAD(stXxl.col,_consurf._ct);
   LOAD(stXl.col,_consurf._ct);
   LOAD(stL.col,_consurf._ct);
-  LOAD(stSubt.col,_consurf._ct);LOAD(stSubt.opacity,_cmemp);
-  
-  LOAD(stUr.col,_consurf._ct);LOAD(stUr.opacity,_chemp);
-  LOAD(stUs.col,_consurf._ct);LOAD(stUs.opacity,_chemp);
-  
-  // pimary text
-  //LOAD(stXxl.col,_cprim._ct);
-  // secondary text
-  LOAD(stXxl.col,_csec._ct);
-  
-  // primary buttons
-  LOAD(sdButP.back,_cprim._ct);
-  LOAD(stButP.col,_conprim._ct);
-  // secondary buttons
-  LOAD(sdButS.back,_csec._ct);
-  LOAD(stButS.col,_consec._ct);
-  
+  LOAD(stSubt.col,_consurf._ct);LOAD(stSubt.opacity,_chemp);
+  // section text - errors
+  LOAD(stXxlE.col,_conerr._ct);
+  LOAD(stXlE.col,_conerr._ct);
+  LOAD(stLE.col,_conerr._ct);
+  LOAD(stSubtE.col,_conerr._ct);LOAD(stSubtE.opacity,_csemp);
+  // units
+  LOAD(stUr.col,_consurf._ct);LOAD(stUr.opacity,_cmemp);
+  LOAD(stUs.col,_consurf._ct);LOAD(stUs.opacity,_cmemp);
+  // units - errors
+  LOAD(stUrE.col,_conerr._ct);LOAD(stUrE.opacity,_cmemp);
+  LOAD(stUsE.col,_conerr._ct);LOAD(stUsE.opacity,_cmemp);
+  // text icon
+  // 24 px
+  LOAD(stI24p.col,_cprim._ct);
+  LOAD(stI24s.col,_csec._ct);
+  LOAD(stI24op.col,_conprim._ct);
+  LOAD(stI24os.col,_consec._ct);
+  LOAD(stI24ob.col,_consurf._ct);
+  LOAD(stI24e.col,_cerr._ct);
+  LOAD(stI24oe.col,_conerr._ct);
+  // text buttons
+  // 35 px
+  LOAD(stB35p.col,_cprim._ct);
+  LOAD(stB35s.col,_csec._ct);
+  // 45 px
+  LOAD(stB45p.col,_cprim._ct);
+  LOAD(stB45s.col,_csec._ct);
+  // text on buttons
+  LOAD(stBop.col,_conprim._ct);
+  LOAD(stBos.col,_consec._ct);
+  LOAD(stBp.col,_cprim._ct);
+  LOAD(stBs.col,_csec._ct);
 }
 
 
+FUNC(_cReloadT1) {
 
+  // background
+  LOAD(spStd.back,_cbckg._ct);
+  // top
+  LOAD(sdTop.back,_cbckg._ct);
+  LOAD(stTop.col,_conbckg._ct);
+  LOAD(stI15t.col,_conbckg._ct);
+  // top bar
+  LOAD(sdBar.back,_cwhite);     LOAD(sdBar.opacity,_ce6);
+  LOAD(stBar.col,_conbckg._ct);
+  LOAD(stI24b.col,_conbckg._ct);
+  // section boxes
+  LOAD(sdBox.back,_cwhite);     LOAD(sdBox.opacity,_ce1);
+  LOAD(sdBoxH.back,_cwhite);    LOAD(sdBoxH.opacity,_ce4);
+  LOAD(sdBoxE.back,_cerr._ct);  LOAD(sdBoxE.opacity,_ce0);
+  // section shapes
+  LOAD(stS10.font,fnSh1f);   LOAD(stS10.col,_cwhite);     LOAD(stS10.opacity,_ce1);
+  LOAD(stS109.font,fnSh1f);  LOAD(stS109.col,_cwhite);    LOAD(stS109.opacity,_ce1);
+  LOAD(stS10h.font,fnSh1f);  LOAD(stS10h.col,_cwhite);    LOAD(stS10h.opacity,_ce4);
+  LOAD(stS10h9.font,fnSh1f); LOAD(stS10h9.col,_cwhite);   LOAD(stS10h9.opacity,_ce4);
+  LOAD(stS10E.font,fnSh1f);  LOAD(stS10E.col,_cerr._ct);  LOAD(stS10E.opacity,_csemp);
+  LOAD(stS10E9.font,fnSh1f); LOAD(stS10E9.col,_cerr._ct); LOAD(stS10E9.opacity,_csemp);
+  // section text
+  LOAD(stXxl.col,_consurf._ct);
+  LOAD(stXl.col,_consurf._ct);
+  LOAD(stL.col,_consurf._ct);
+  LOAD(stSubt.col,_consurf._ct);LOAD(stSubt.opacity,_chemp);
+  // section text - errors
+  LOAD(stXxlE.col,_conerr._ct);
+  LOAD(stXlE.col,_conerr._ct);
+  LOAD(stLE.col,_conerr._ct);
+  LOAD(stSubtE.col,_conerr._ct);LOAD(stSubtE.opacity,_csemp);
+  // units
+  LOAD(stUr.col,_consurf._ct);LOAD(stUr.opacity,_cmemp);
+  LOAD(stUs.col,_consurf._ct);LOAD(stUs.opacity,_cmemp);
+  // units - errors
+  LOAD(stUrE.col,_conerr._ct);LOAD(stUrE.opacity,_cmemp);
+  LOAD(stUsE.col,_conerr._ct);LOAD(stUsE.opacity,_cmemp);
+  // text icon
+  // 24 px
+  LOAD(stI24p.col,_cprim._ct);
+  LOAD(stI24s.col,_csec._ct);
+  LOAD(stI24op.col,_conprim._ct);
+  LOAD(stI24os.col,_consec._ct);
+  LOAD(stI24ob.col,_consurf._ct);
+  LOAD(stI24e.col,_cerr._ct);
+  LOAD(stI24oe.col,_conerr._ct);
+  // text buttons
+  // 35 px
+  LOAD(stB35p.col,_cprim._ct);
+  LOAD(stB35s.col,_csec._ct);
+  // 45 px
+  LOAD(stB45p.col,_cprim._ct);
+  LOAD(stB45s.col,_csec._ct);
+  // text on buttons
+  LOAD(stBop.col,_conprim._ct);
+  LOAD(stBos.col,_consec._ct);
+  LOAD(stBp.col,_cprim._ct);
+  LOAD(stBs.col,_csec._ct);
+}
 
+FUNC(_cReloadT2) {
 
+  // background
+  LOAD(spStd.back,_cbckg._ct);
+  // top
+  LOAD(sdTop.back,_cbckg._ct);
+  LOAD(stTop.col,_conbckg._ct);
+  LOAD(stI15t.col,_conbckg._ct);
+  // top bar
+  LOAD(sdBar.back,_cwhite);     LOAD(sdBar.opacity,_ce6);
+  LOAD(stBar.col,_conbckg._ct);
+  LOAD(stI24b.col,_conbckg._ct);
+  // section boxes
+  LOAD(sdBox.back,_cwhite);     LOAD(sdBox.opacity,_ce1);
+  LOAD(sdBoxH.back,_cwhite);    LOAD(sdBoxH.opacity,_ce4);
+  LOAD(sdBoxE.back,_cerr._ct);  LOAD(sdBoxE.opacity,_ce0);
+  // section shapes
+  LOAD(stS10.font,fnSh1f);   LOAD(stS10.col,_cwhite);     LOAD(stS10.opacity,_ce1);
+  LOAD(stS109.font,fnSh1f);  LOAD(stS109.col,_cwhite);    LOAD(stS109.opacity,_ce1);
+  LOAD(stS10h.font,fnSh1f);  LOAD(stS10h.col,_cwhite);    LOAD(stS10h.opacity,_ce4);
+  LOAD(stS10h9.font,fnSh1f); LOAD(stS10h9.col,_cwhite);   LOAD(stS10h9.opacity,_ce4);
+  LOAD(stS10E.font,fnSh1f);  LOAD(stS10E.col,_cerr._ct);  LOAD(stS10E.opacity,_csemp);
+  LOAD(stS10E9.font,fnSh1f); LOAD(stS10E9.col,_cerr._ct); LOAD(stS10E9.opacity,_csemp);
+  // section text
+  LOAD(stXxl.col,_consurf._ct);
+  LOAD(stXl.col,_consurf._ct);
+  LOAD(stL.col,_consurf._ct);
+  LOAD(stSubt.col,_consurf._ct);LOAD(stSubt.opacity,_chemp);
+  // section text - errors
+  LOAD(stXxlE.col,_conerr._ct);
+  LOAD(stXlE.col,_conerr._ct);
+  LOAD(stLE.col,_conerr._ct);
+  LOAD(stSubtE.col,_conerr._ct);LOAD(stSubtE.opacity,_csemp);
+  // units
+  LOAD(stUr.col,_consurf._ct);LOAD(stUr.opacity,_cmemp);
+  LOAD(stUs.col,_consurf._ct);LOAD(stUs.opacity,_cmemp);
+  // units - errors
+  LOAD(stUrE.col,_conerr._ct);LOAD(stUrE.opacity,_cmemp);
+  LOAD(stUsE.col,_conerr._ct);LOAD(stUsE.opacity,_cmemp);
+  // text icon
+  // 24 px
+  LOAD(stI24p.col,_cprim._ct);
+  LOAD(stI24s.col,_csec._ct);
+  LOAD(stI24op.col,_conprim._ct);
+  LOAD(stI24os.col,_consec._ct);
+  LOAD(stI24ob.col,_consurf._ct);
+  LOAD(stI24e.col,_cerr._ct);
+  LOAD(stI24oe.col,_conerr._ct);
+  // text buttons
+  // 35 px
+  LOAD(stB35p.col,_cprim._ct);
+  LOAD(stB35s.col,_csec._ct);
+  // 45 px
+  LOAD(stB45p.col,_cprim._ct);
+  LOAD(stB45s.col,_csec._ct);
+  // text on buttons
+  LOAD(stBop.col,_conprim._ct);
+  LOAD(stBos.col,_consec._ct);
+  LOAD(stBp.col,_cprim._ct);
+  LOAD(stBs.col,_csec._ct);
+  
+  
+}
