@@ -15,6 +15,7 @@ LIB(fnRr64,"EMMC/fnRr64.fnt");
 LIB(fnRr96,"EMMC/fnRr96.fnt");
 // Roboto Medium
 LIB(fnRm14,"EMMC/fnRm14.fnt");
+LIB(fnRm20,"EMMC/fnRm20.fnt");
 LIB(fnRm24,"EMMC/fnRm24.fnt");
 // Roboto Light
 LIB(fnRl24,"EMMC/fnRl24.fnt");

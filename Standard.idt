@@ -5,11 +5,11 @@ tw480a.mnu,0
 _inc.mnu,0
 _lib.mnu,0
 _setup.mnu,0
-_style.mnu,3180
+_style.mnu,240
 _var.mnu,0
 f_init.mnu,0
 f_main.mnu,0
-p_main.mnu,1425
+p_main.mnu,315
 p_menu.mnu,0
 p_splash.mnu,0
 *Images
@@ -43,6 +43,7 @@ fnRl64.fnt
 fnRl80.fnt
 fnRl96.fnt
 fnRm14.fnt
+fnRm20.fnt
 fnRm24.fnt
 fnRr12.fnt
 fnRr14.fnt
@@ -69,6 +70,6 @@ fnRl54.fnt
 *Disp
 1
 *Time
-1176
+1344
 *Last
-p_main.mnu
+_style.mnu

@@ -3,3 +3,7 @@
 // @DESCRIPTION:  Variables
 //
 
+// Timers
+VAR(nTimRefr,500,U16);
+
+

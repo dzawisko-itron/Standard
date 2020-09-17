@@ -14,6 +14,9 @@ FUNC(f_Init) {
 
 FUNC(f_InitInt) {
 
+  INT(i_Main,TIMER1,f_Main);
+
+
 
 }
 
@@ -25,6 +28,6 @@ FUNC(f_InitStart) {
   SHOW(p_Splash);
   
   WAIT(1000);
-  
+  LOAD(TIMER1,nTimRefr);
   SHOW(p_Main);
 }

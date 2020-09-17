@@ -5,16 +5,16 @@
 
 PAGE(p_Main, spStd) {
 
+  // Debug Keys
+  KEY(kTType,[CALC(_ct,"++");IF(_ct>2?[LOAD(_ct,0);]);RUN(_cReloadTheme);],100,50,TOUCH,140,25);
+  KEY(kTPrim,[CALC(_cp,"++");IF(_cp>18?[LOAD(_cp,0);]);RUN(_cReloadCol);RUN(_cReloadTheme);],100,50,TOUCH,240,25);
+  KEY(kTSecn,[CALC(_cs,"++");IF(_cs>18?[LOAD(_cs,0);]);RUN(_cReloadCol);RUN(_cReloadTheme);],100,50,TOUCH,340,25);  
+
   // Top
   DRAW(dTop,480,15,sdTop,0,0);
   TEXT(tTop,"14:27",stTop,20,7);
   TEXT(iUsb,"0",stI15t,435,7);
   TEXT(iWifi,"2",stI15t,453,7);  
-  
-  // Debug Keys
-  KEY(kTType,[CALC(_ct,"++");IF(_ct>2?[LOAD(_ct,0);]);RUN(_cReloadTheme);;],100,50,TOUCH,140,25);
-  KEY(kTPrim,[CALC(_cp,"++");IF(_cp>18?[LOAD(_cp,0);]);RUN(_cReloadCol);RUN(_cReloadTheme);;],100,50,TOUCH,240,25);
-  KEY(kTSecn,[CALC(_cs,"++");IF(_cs>18?[LOAD(_cs,0);]);RUN(_cReloadCol);RUN(_cReloadTheme);;],100,50,TOUCH,340,25);  
   
   // Top Bar
   DRAW(dBar,480,45,sdBar,0,15);
@@ -36,8 +36,8 @@ PAGE(p_Main, spStd) {
   TEXT(tBoxT,"Error",stSubtE,130,72);//Current temperature
   TEXT(tTemp,"N/A",stXxlE,230,130);
   TEXT(tTempC,"\\B0C",stUrE,315,142);
-  
   TEXT(tIErr,"9",stI24oe,345,80);
+  KEY(kIErr,f_DbgErr,50,50,TOUCH,345,80);
   
   // Middle Bottom
   // Box
@@ -63,15 +63,17 @@ PAGE(p_Main, spStd) {
   TEXT(tBoxLr,"::::::::::::::::::;;;;;;;;",stS109,108,72);
   TEXT(tBoxLb,"45555555556666667",stS10,4,260);
   TEXT(tBoxL,"Data",stSubt,17,72);
-
-  
+  DRAW(gG1,80,100,sgG1,20,100);
   // Prim button
   // Details
-  TEXT(bBDet,"45556667",stB35p,14,223);
-  TEXT(bIDet,"7",stI24p,35,241);
-  //Programs
-  TEXT(bBPrg,"01112223",stB35p,63,223);
-  TEXT(bIPrg,"8",stI24op,84,241);
+  TEXT(bBDetSh,"01112223",stB35sh,16,226);
+  TEXT(bBDetBg,"01112223",stB35b,14,223);
+  TEXT(bBDet,"45556667",stB35s,14,223);
+  TEXT(bIDet,"7",stI24s,35,241);
+  // Programs
+  TEXT(bBPrgSh,"01112223",stB35sh,65,226);
+  TEXT(bBPrg,"01112223",stB35s,63,223);
+  TEXT(bIPrg,"8",stI24os,84,241);
   
   // Right
   // Box
@@ -88,45 +90,95 @@ PAGE(p_Main, spStd) {
   TEXT(tBoxRb2,"75%",stM,420,185);
   
   // Sec button
+  TEXT(bBPlaySh,"0111113",stB45sh,376,216);
   TEXT(bBPlay,"0111113",stB45s,374,213);
   TEXT(bIPlay,"0",stI24os,390,235);
   TEXT(bLPlay,"START",stBos,426,236);
   
   // Right menu
-  DRAW(dRMenu,100,120,sdBoxS,370,50);
-  DRAW(dRMenu2,100,120,sdBoxS2,370,50);
+  DRAW(dRMenu,100,160,sdBoxS,370,50);
+  DRAW(dRMenu2,100,160,sdBoxS2,370,50);
   TEXT(tRMenut,"A111111111B",stS10f,368,45);
-  TEXT(tRMenul,"88888888888",stS10f9,365,55);
-  TEXT(tRMenur,":::::::::::",stS10f9,465,55);
-  TEXT(tRMenub,"C555555555D",stS10f,368,165);
-  TEXT(tRMenu1,"Programs",stMenu.col,403,70);   TEXT(bIRMenu1,"8",stI24ob,384,70);
-  TEXT(tRMenu2,"PID Graph",stMenu.col,403,110); TEXT(bIRMenu2,"7",stI24ob,384,110);
-  TEXT(tRMenu3,"Setting",stMenu.col,403,150);   TEXT(bIRMenu3,"6",stI24ob,384,150);
-  HIDE(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,bIRMenu1,bIRMenu2,bIRMenu3);
+  TEXT(tRMenul,"888888888888888",stS10f9,365,55);
+  TEXT(tRMenur,":::::::::::::::",stS10f9,465,55);
+  TEXT(tRMenub,"C555555555D",stS10f,368,205);
+  TEXT(tRMenu1,"Programs",stMenu.col,403,70);   TEXT(bIRMenu1,"8",stI24ob,384,70);  KEY(kRMenu1,f_Dummy,100,40,TOUCH,420,70);
+  TEXT(tRMenu2,"PID Graph",stMenu.col,403,110); TEXT(bIRMenu2,"7",stI24ob,384,110); KEY(kRMenu2,f_Dummy,100,40,TOUCH,420,110);
+  TEXT(tRMenu3,"Logs",stMenu.col,403,150);      TEXT(bIRMenu3,":",stI24ob,384,150); KEY(kRMenu3,f_Dummy,100,40,TOUCH,420,150);
+  TEXT(tRMenu4,"Start",stMenu.col,403,190);     TEXT(bIRMenu4,"0",stI24ob,384,190); KEY(kRMenu4,f_Dummy,100,40,TOUCH,420,190);
+  
+  HIDE(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,tRMenu4,bIRMenu1,bIRMenu2,bIRMenu3,bIRMenu4,kRMenu1,kRMenu2,kRMenu3,kRMenu4);
   
   // Main menu
   DRAW(dMenu,200,272,sdBoxS,0,0);
   DRAW(dMenu2,200,272,sdBoxS2,0,0);
-  DRAW(dMenuSh,280,272,sdBoxSh,200,0);
+  DRAW(dMenuSh,280,272,sdBoxSh,200,0);                                              KEY(kMenuSh,f_OpenMenu,280,272,TOUCH,340,136);
   TEXT(tMenur,":::::::::::::::::::::::::::;;",stS10f9,195,0);
-  TEXT(tMenut,"Oven Application",stMenuT,10,18);
-  DRAW(dMenuD1,190,1,sdBoxSh,5,40);
-  TEXT(tMenu1,"Programs",stMenu.col,50,60);   TEXT(bIMenu1,"8",stI24ob,20,60);
-  TEXT(tMenu2,"PID Graph",stMenu.col,50,100); TEXT(bIMenu2,"7",stI24ob,20,100);
-  TEXT(tMenu3,"Setting",stMenu.col,50,140);   TEXT(bIMenu3,"6",stI24ob,20,140);
+  TEXT(tMenuT,"Oven Application",stMenuT,15,18);                                    KEY(kMenuT,f_OpenMenu,200,40,TOUCH,100,20);
+  DRAW(dMenuD1,190,2,sdDiv,5,40);
+  TEXT(tMenu1,"Setting",stMenu.col,60,60);      TEXT(bIMenu1,"8",stI24ob,30,60);    KEY(kMenu1,f_Dummy,200,30,TOUCH,100,60);
+  TEXT(tMenu2,"Themes",stMenu.col,60,90);       TEXT(bIMenu2,";",stI24ob,29,90);    KEY(kMenu2,f_Dummy,200,30,TOUCH,100,90);
+  TEXT(tMenu3,"Programs",stMenu.col,60,120);    TEXT(bIMenu3,"6",stI24ob,29,120);   KEY(kMenu3,f_Dummy,200,30,TOUCH,100,120);
+  TEXT(tMenu4,"PID Graph",stMenu.col,60,150);   TEXT(bIMenu4,"7",stI24ob,29,150);   KEY(kMenu4,f_Dummy,200,30,TOUCH,100,150);
+  TEXT(tMenu5,"Logs",stMenu.col,60,180);        TEXT(bIMenu5,":",stI24ob,30,180);   KEY(kMenu5,f_Dummy,200,30,TOUCH,100,180);
+  TEXT(tMenu6,"Someting",stMenu.col,60,210);    TEXT(bIMenu6,"9",stI24ob,30,210);   KEY(kMenu6,f_Dummy,200,30,TOUCH,100,210);
+  DRAW(dMenuD2,190,2,sdDiv,5,235);
+  TEXT(tMenu0,"About",stMenu.col,60,255);       TEXT(bIMenu0,"<",stI24ob,30,255);   KEY(kMenu0,f_Dummy,200,30,TOUCH,100,60);
+  HIDE(dMenu,dMenu2,dMenuSh,kMenuSh,tMenur,tMenuT,kMenuT,dMenuD1,dMenuD2,tMenu1,tMenu2,tMenu3,tMenu4,tMenu5,tMenu6,tMenu0);
+  HIDE(bIMenu1,bIMenu2,bIMenu3,bIMenu4,bIMenu5,bIMenu6,bIMenu0,kMenu1,kMenu2,kMenu3,kMenu4,kMenu5,kMenu6,kMenu0);
 }
 
 // Main page functions
 
+FUNC(f_Dummy) {}
+
+VAR(nErr,1,U8);
+VAR(nAuto,1,U8);
+FUNC(f_DbgErr) {
+  IF(nErr=0?[LOAD(nErr,1);RUN(f_ErrTher1);]:[LOAD(nErr,0);RUN(f_ErrTher0);]);;
+}
+
+FUNC(f_ErrTher1) {
+  LOAD(dBoxT.style,sdBoxE);
+  LOAD(tBoxTt.style,stS10E);
+  LOAD(tBoxTl.style,stS10E9);
+  LOAD(tBoxTr.style,stS10E9);
+  LOAD(tBoxTb.style,stS10E);
+  LOAD(tBoxT.style,stSubtE);
+  LOAD(tTemp.style,stXxlE);
+  LOAD(tTempC.style,stUrE);
+  LOAD(tIErr.style,stI24oe);
+  TEXT(tBoxT,"Error");
+  TEXT(tTemp,"N/A");
+  TEXT(tIErr,"9");
+
+}
+FUNC(f_ErrTher0) {
+  LOAD(dBoxT.style,sdBoxH);
+  LOAD(tBoxTt.style,stS10h);
+  LOAD(tBoxTl.style,stS10h9);
+  LOAD(tBoxTr.style,stS10h9);
+  LOAD(tBoxTb.style,stS10h);
+  LOAD(tBoxT.style,stSubt);
+  LOAD(tTemp.style,stXxl);
+  LOAD(tTempC.style,stUr);
+  LOAD(tIErr.style,stI24p);
+  TEXT(tBoxT,"Current temperature");
+  TEXT(tTemp,"275");
+  IF(nAuto=1?[TEXT(tIErr,"=");]:[TEXT(tIErr,">");]);
+}
+
+
+VAR(nMenu,0,U8);
 FUNC(f_OpenMenu) {
-
-
+  IF(nMenu=0?[LOAD(nMenu,1);SHOW(dMenu,dMenu2,dMenuSh,kMenuSh,tMenur,tMenuT,kMenuT,dMenuD1,dMenuD2,tMenu1,tMenu2,tMenu3,tMenu4,tMenu5,tMenu6,tMenu0);SHOW(bIMenu1,bIMenu2,bIMenu3,bIMenu4,bIMenu5,bIMenu6,bIMenu0,kMenu1,kMenu2,kMenu3,kMenu4,kMenu5,kMenu6,kMenu0);]:
+    [LOAD(nMenu,0);HIDE(dMenu,dMenu2,dMenuSh,kMenuSh,tMenur,tMenuT,kMenuT,dMenuD1,dMenuD2,tMenu1,tMenu2,tMenu3,tMenu4,tMenu5,tMenu6,tMenu0);HIDE(bIMenu1,bIMenu2,bIMenu3,bIMenu4,bIMenu5,bIMenu6,bIMenu0,kMenu1,kMenu2,kMenu3,kMenu4,kMenu5,kMenu6,kMenu0);]);;
 }
 
 VAR(nRMenu,0,U8);
 FUNC(f_OpenRMenu) {
-  IF(nRMenu=0?[LOAD(nRMenu,1);SHOW(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,bIRMenu1,bIRMenu2,bIRMenu3);]:
-    [LOAD(nRMenu,0);HIDE(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,bIRMenu1,bIRMenu2,bIRMenu3);]);;
+  IF(nRMenu=0?[LOAD(nRMenu,1);SHOW(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,tRMenu4,bIRMenu1,bIRMenu2,bIRMenu3,bIRMenu4,kRMenu1,kRMenu2,kRMenu3,kRMenu4);]:
+    [LOAD(nRMenu,0);HIDE(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,tRMenu4,bIRMenu1,bIRMenu2,bIRMenu3,bIRMenu4,kRMenu1,kRMenu2,kRMenu3,kRMenu4);]);;
 }
 
 
