@@ -7,18 +7,22 @@ PAGE(p_Main, spStd) {
 
   // Top
   DRAW(dTop,480,15,sdTop,0,0);
-
   TEXT(tTop,"14:27",stTop,20,7);
   TEXT(iUsb,"0",stI15t,435,7);
   TEXT(iWifi,"2",stI15t,453,7);  
-    
+  
+  // Debug Keys
+  KEY(kTType,[CALC(_ct,"++");IF(_ct>2?[LOAD(_ct,0);]);RUN(_cReloadTheme);;],100,50,TOUCH,140,25);
+  KEY(kTPrim,[CALC(_cp,"++");IF(_cp>18?[LOAD(_cp,0);]);RUN(_cReloadCol);RUN(_cReloadTheme);;],100,50,TOUCH,240,25);
+  KEY(kTSecn,[CALC(_cs,"++");IF(_cs>18?[LOAD(_cs,0);]);RUN(_cReloadCol);RUN(_cReloadTheme);;],100,50,TOUCH,340,25);  
+  
   // Top Bar
   DRAW(dBar,480,45,sdBar,0,15);
   TEXT(tBarS1,"555555555555555555555555",stS10s,0,55);
   TEXT(tBarS2,"555555555555555555555555",stS10s,240,55);
-  TEXT(iMenu,"4",stI24b,30,37);
-  TEXT(iMenuv,"5",stI24b,458,37);
-  TEXT(tBar,"Program 1",stBar,60,37);
+  TEXT(iMenu,"4",stI24b,30,37);     KEY(kMenu,f_OpenMenu,60,50,TOUCH,30,37);
+  TEXT(iMenuv,"5",stI24b,458,37);   KEY(kMenuv,f_OpenRMenu,60,50,TOUCH,458,37);
+  TEXT(tBar,"Program No. 1",stBar,60,37);
   
   // Sections
   // Middle Top
@@ -59,6 +63,8 @@ PAGE(p_Main, spStd) {
   TEXT(tBoxLr,"::::::::::::::::::;;;;;;;;",stS109,108,72);
   TEXT(tBoxLb,"45555555556666667",stS10,4,260);
   TEXT(tBoxL,"Data",stSubt,17,72);
+
+  
   // Prim button
   // Details
   TEXT(bBDet,"45556667",stB35p,14,223);
@@ -75,10 +81,54 @@ PAGE(p_Main, spStd) {
   TEXT(tBoxRr,"::::::::::::::::::;;;;;;;;",stS109,468,72);
   TEXT(tBoxRb,"45555555556666667",stS10,364,260);
   // Text
-  TEXT(tBoxR,"Data",stSubt,377,72);
+  TEXT(tBoxR,"Power",stSubt,377,72);
+  TEXT(tBoxRb1,"PID Loop",stBodyC,420,105);
+  DRAW(dBoxRpowb,82,40,sdBoxPb,379,122);
+  DRAW(dBoxRpow,60,38,sdBoxP,380,123);
+  TEXT(tBoxRb2,"75%",stM,420,185);
+  
   // Sec button
   TEXT(bBPlay,"0111113",stB45s,374,213);
   TEXT(bIPlay,"0",stI24os,390,235);
   TEXT(bLPlay,"START",stBos,426,236);
   
+  // Right menu
+  DRAW(dRMenu,100,120,sdBoxS,370,50);
+  DRAW(dRMenu2,100,120,sdBoxS2,370,50);
+  TEXT(tRMenut,"A111111111B",stS10f,368,45);
+  TEXT(tRMenul,"88888888888",stS10f9,365,55);
+  TEXT(tRMenur,":::::::::::",stS10f9,465,55);
+  TEXT(tRMenub,"C555555555D",stS10f,368,165);
+  TEXT(tRMenu1,"Programs",stMenu.col,403,70);   TEXT(bIRMenu1,"8",stI24ob,384,70);
+  TEXT(tRMenu2,"PID Graph",stMenu.col,403,110); TEXT(bIRMenu2,"7",stI24ob,384,110);
+  TEXT(tRMenu3,"Setting",stMenu.col,403,150);   TEXT(bIRMenu3,"6",stI24ob,384,150);
+  HIDE(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,bIRMenu1,bIRMenu2,bIRMenu3);
+  
+  // Main menu
+  DRAW(dMenu,200,272,sdBoxS,0,0);
+  DRAW(dMenu2,200,272,sdBoxS2,0,0);
+  DRAW(dMenuSh,280,272,sdBoxSh,200,0);
+  TEXT(tMenur,":::::::::::::::::::::::::::;;",stS10f9,195,0);
+  TEXT(tMenut,"Oven Application",stMenuT,10,18);
+  DRAW(dMenuD1,190,1,sdBoxSh,5,40);
+  TEXT(tMenu1,"Programs",stMenu.col,50,60);   TEXT(bIMenu1,"8",stI24ob,20,60);
+  TEXT(tMenu2,"PID Graph",stMenu.col,50,100); TEXT(bIMenu2,"7",stI24ob,20,100);
+  TEXT(tMenu3,"Setting",stMenu.col,50,140);   TEXT(bIMenu3,"6",stI24ob,20,140);
 }
+
+// Main page functions
+
+FUNC(f_OpenMenu) {
+
+
+}
+
+VAR(nRMenu,0,U8);
+FUNC(f_OpenRMenu) {
+  IF(nRMenu=0?[LOAD(nRMenu,1);SHOW(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,bIRMenu1,bIRMenu2,bIRMenu3);]:
+    [LOAD(nRMenu,0);HIDE(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,bIRMenu1,bIRMenu2,bIRMenu3);]);;
+}
+
+
+
+

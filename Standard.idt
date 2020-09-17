@@ -3,13 +3,13 @@ Standard.idt
 *Menu
 tw480a.mnu,0
 _inc.mnu,0
-_lib.mnu,135
-_setup.mnu,60
-_style.mnu,720
+_lib.mnu,0
+_setup.mnu,0
+_style.mnu,3180
 _var.mnu,0
 f_init.mnu,0
 f_main.mnu,0
-p_main.mnu,225
+p_main.mnu,1425
 p_menu.mnu,0
 p_splash.mnu,0
 *Images
@@ -69,6 +69,6 @@ fnRl54.fnt
 *Disp
 1
 *Time
-906
+1176
 *Last
-_style.mnu
+p_main.mnu
