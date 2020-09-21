@@ -7,9 +7,18 @@ FUNC(f_Init) {
 
   INC("EMMC/_inc.mnu");
 
+  RUN(f_InitDbg);
   RUN(f_InitInt);
   RUN(f_InitStart);
 }
+
+FUNC(f_InitDbg) {
+  LOAD(_iCh4,10000);
+
+
+}
+
+
 
 FUNC(f_InitInt) {
 
@@ -28,6 +37,6 @@ FUNC(f_InitStart) {
   SHOW(p_Splash);
   
   WAIT(1000);
-  LOAD(TIMER1,nTimRefr);
+  LOAD(TIMER1,nTimRefr,0);
   SHOW(p_Main);
 }

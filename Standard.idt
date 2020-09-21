@@ -3,8 +3,9 @@ Standard.idt
 *Menu
 tw480a.mnu,0
 _inc.mnu,0
-_lib.mnu,84
+_lib.mnu,0
 _p_cStyle.mnu,0
+_p_iGetAdc.mnu,825
 _setup.mnu,0
 _var.mnu,0
 f_init.mnu,0
@@ -38,9 +39,11 @@ fnRr96.fnt
 fnSh10.fnt
 fnSh1e.fnt
 fnSh1f.fnt
+*Tabs
+_p_cStyle.mnu
 *Disp
 1
 *Time
-1489
+1593
 *Last
-_p_cStyle.mnu
+_p_iGetAdc.mnu

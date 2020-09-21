@@ -6,10 +6,17 @@
 
 FUNC(f_Main) {
 
-
+  RUN(f_GetData);
 
   RUN(f_PageUpd);
 }
+
+FUNC(f_GetData) {
+  RUN(_iSetIT);
+
+}
+
+
 
 FUNC(f_PageUpd) {
   

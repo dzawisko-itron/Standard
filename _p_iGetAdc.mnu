@@ -1,0 +1,86 @@
+////
+// @FILE:         _p_iGetData.mnu
+// @DESCRIPTION:  Get data from ADC channels.
+//                Plugin which allows to switch beteen different functionalities 
+//                and read data from CN3 (I2C ADC).
+//                
+//                All variables and functions starts with _i
+//    
+
+////
+// Variables
+
+// ADC channels
+VAR(_iCh1, 0, S32);
+VAR(_iCh2, 0, S32);
+VAR(_iCh3, 0, S32);
+VAR(_iCh4, 0, S32);
+// Bits high & low
+VAR(_iBh, 0, U8);
+VAR(_iBl, 0, U8);
+// Kelvin
+VAR(_iKelv,273.15,FLT4);
+// Internal Thermistor
+VAR(_iIfact,13198388.6719,FLT4); //52798388.6719 - 16 bits, 13198388.6719 - 14 bits
+VAR(_iIRtd,0,FLT4);
+VAR(_iIRt,0,FLT4);
+VAR(_iIlnval,0,FLT4);
+VAR(_iIlnfr,0,FLT4);
+VAR(_iITrn,0,FLT4);
+VAR(_iITrd,0,FLT4);
+VAR(_iIRrm,10000,FLT4);
+VAR(_iIBeta,4000,FLT4);
+VAR(_iITrm,298.15,FLT4);
+VAR(_iI,22,FLT4);
+VAR(_iI1,0,FLT1);
+VAR(_iIBeta,4000,FLT4);
+VAR(_iITrm,298.15,FLT4);
+VAR(_iI,22,FLT4);
+VAR(_iI1,0,FLT1);
+
+
+
+
+
+////
+// Functions
+
+// ADC Channel 1 request / Thermocouple, Thermistor, ADC / 87 - 14bits / 8B - 16 bits / 88 - 16 bits no gain
+FUNC(_iGetCh1) {
+  LOAD(i2cm,\\6F,0,\\87);WAIT(20);LOAD(i2cm,\\6F,2);WAIT(5);
+  LOAD(_iBh,i2cm);LOAD(_iBl,i2cm);
+  IF(_iBh<128?[CALC(_iCh1,_iBh,256,_iBl,"*+");]:[CALC(_iBl,_iBl,255,"^");CALC(_iBh,_iBh,255,"^");CALC(_iCh1,_iBh,256,_iBl,"*+");CALC(_iCh1,"++");CALC(_iCh1,0,_iCh1,"-");]);
+}
+// ADC Channel 2 request / Thermocouple, Thermistor, ADC / A7 - 14bits / AB - 16 bits / A8 - 16 bits no gain
+FUNC(_iGetCh2) {
+  LOAD(i2cm,\\6F,0,\\A7);WAIT(20);LOAD(i2cm,\\6F,2);WAIT(5);
+  LOAD(_iBh,i2cm);LOAD(_iBl,i2cm);
+  IF(_iBh<128?[CALC(_iCh2,_iBh,256,_iBl,"*+");]:[CALC(_iBl,_iBl,255,"^");CALC(_iBh,_iBh,255,"^");CALC(_iCh2,_iBh,256,_iBl,"*+");CALC(_iCh2,"++");CALC(_iCh2,0,_iCh2,"-");]);
+}
+// ADC Channel 3 request / 4-20 mA loop, ADC / C7 - 14bits / CB - 16 bits / C8 - 16 bits no gain
+FUNC(_iGetCh3) {
+  LOAD(i2cm,\\6F,0,\\C7);WAIT(20);LOAD(i2cm,\\6F,2);WAIT(5);
+  LOAD(_iBh,i2cm);LOAD(_iBl,i2cm);
+  IF(_iBh<128?[CALC(_iCh3,_iBh,256,_iBl,"*+");]:[CALC(_iBl,_iBl,255,"^");CALC(_iBh,_iBh,255,"^");CALC(_iCh3,_iBh,256,_iBl,"*+");CALC(_iCh3,"++");CALC(_iCh3,0,_iCh3,"-");]);
+}
+// ADC Channel 4 request / Internal Thermistor / E7 - 14bits / EB - 16 bits / E8 - 16 bits no gain
+FUNC(_iGetCh4) {
+  LOAD(i2cm,\\6F,0,\\E4);WAIT(20);LOAD(i2cm,\\6F,2);WAIT(5);
+  LOAD(_iBh,i2cm);LOAD(_iBl,i2cm);
+  IF(_iBh<128?[CALC(_iCh4,_iBh,256,_iBl,"*+");]:[CALC(_iBl,_iBl,255,"^");CALC(_iBh,_iBh,255,"^");CALC(_iCh4,_iBh,256,_iBl,"*+");CALC(_iCh4,"++");CALC(_iCh4,0,_iCh4,"-");]);
+}
+
+// Calculate thermistor temperature
+FUNC(_iSetIT) {
+  IF(_iCh4>0?[CALC(_iIRtd,_iIfact,_iCh4,"/");]:[EXIT(f_SetTr);]);
+  CALC(_iIRt,_iIRtd,1000,"-");
+  CALC(_iIlnfr,_iIRt,_iIRrm,"/");
+  IF(_iIlnfr=0?[LOAD(_iIlnfr,1);]);
+  CALC(_iIlnval,_iIlnfr,"LOG");
+  CALC(_iITrd,_iITrm,_iIlnval,_iIBeta,"*+");
+  CALC(_iITrn,_iIBeta,_iITrm,"*");
+  CALC(_iI,_iITrn,_iITrd,"/");
+  CALC(_iI,_iI,_iKelv,"-");
+  LOAD(_iI1,_iI);
+}
+
