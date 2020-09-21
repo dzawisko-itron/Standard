@@ -6,7 +6,7 @@
 // Settings
 INC("EMMC/_setup.mnu");
 INC("EMMC/_lib.mnu");
-INC("EMMC/_style.mnu");
+INC("EMMC/_p_cStyle.mnu");
 INC("EMMC/_var.mnu");
 
 // Pages

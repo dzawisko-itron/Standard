@@ -1,7 +1,9 @@
 ////
-// @FILE:         _style.mnu
-// @DESCRIPTION:  Styles & Coulour Themes
-//  
+// @FILE:         _p_cStyle.mnu
+// @DESCRIPTION:  Coulour Themes & Styles
+//                Plugin with functions and styles which allows 
+//                to build pages according to Google Material Design
+//                
 
 
 ////
@@ -63,95 +65,93 @@ VAR(_ce30,20,U8);
 
 // Keys
 // Pages
-STYLE(spStd,  page) {back=0;}
+STYLE(spStd,    page) {back=0;}
 // Drawings
-STYLE(sdTop,  draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdBar,  draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdBox,  draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdBoxH, draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdBoxE, draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdBoxP, draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdBoxPb,draw) {type=B;width=1;back=red;col=0;currel=TL;}
-STYLE(sdBoxS, draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdBoxS2,draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdBoxSh,draw) {type=B;width=0;back=0;opacity=50;currel=TL;}
-STYLE(sdDiv,  draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdDraw, draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdDrawH,draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdMenu, draw) {type=B;width=0;back=red;currel=TL;}
-STYLE(sdMenuH,draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdTop,    draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdBar,    draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdBox,    draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdBoxH,   draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdBoxE,   draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdBoxP,   draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdBoxPb,  draw) {type=B;width=1;back=red;col=0;currel=TL;}
+STYLE(sdBoxS,   draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdBoxS2,  draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdBoxSh,  draw) {type=B;width=0;back=0;opacity=50;currel=TL;}
+STYLE(sdDiv,    draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdDraw,   draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdDrawH,  draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdMenu,   draw) {type=B;width=0;back=red;currel=TL;}
+STYLE(sdMenuH,  draw) {type=B;width=0;back=red;currel=TL;}
 // Graphs
-STYLE(sgG1,   draw) {type=yBar;width=8;back=red;col=green;currel=TL;}
+STYLE(sgG1,     draw) {type=yBar;width=8;back=red;col=green;currel=TL;}
 // Text
-STYLE(stTop,  text) {font=fnRr12;col=0;currel=CL;}
-STYLE(stBar,  text) {font=fnRm24;col=0;currel=CL;}
+STYLE(stTop,    text) {font=fnRr12;col=0;currel=CL;}
+STYLE(stBar,    text) {font=fnRm24;col=0;currel=CL;}
 // on buttons
-STYLE(stBop,  text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
-STYLE(stBos,  text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
-STYLE(stBp,   text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
-STYLE(stBs,   text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
-STYLE(stMenu, text) {font=fnRr14;col=0;currel=CL;xSpace=1;}
-STYLE(stMenuT,text) {font=fnRm20;col=0;currel=CL;xSpace=1;}
-STYLE(stXxl,  text) {font=fnRl80;col=0;currel=CC;}
-STYLE(stXl,   text) {font=fnRl54;col=0;currel=CC;}
-STYLE(stL,    text) {font=fnRl48;col=0;currel=CC;xSpace=1;}
-STYLE(stM,    text) {font=fnRl32;col=0;currel=CC;xSpace=1;}
-STYLE(stSubt, text) {font=fnRr14;col=0;currel=TL;xSpace=1;}
-STYLE(stBody, text) {font=fnRr16;col=0;currel=TL;xSpace=1;}
-STYLE(stBodyC,text) {font=fnRr16;col=0;currel=CC;xSpace=1;}
+STYLE(stBop,    text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
+STYLE(stBos,    text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
+STYLE(stBp,     text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
+STYLE(stBs,     text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
+STYLE(stMenu,   text) {font=fnRr14;col=0;currel=CL;xSpace=1;}
+STYLE(stMenuT,  text) {font=fnRm20;col=0;currel=CL;xSpace=1;}
+STYLE(stXxl,    text) {font=fnRl80;col=0;currel=CC;}
+STYLE(stXl,     text) {font=fnRl54;col=0;currel=CC;}
+STYLE(stL,      text) {font=fnRl48;col=0;currel=CC;xSpace=1;}
+STYLE(stM,      text) {font=fnRl32;col=0;currel=CC;xSpace=1;}
+STYLE(stSubt,   text) {font=fnRr14;col=0;currel=TL;xSpace=1;}
+STYLE(stBody,   text) {font=fnRr16;col=0;currel=TL;xSpace=1;}
+STYLE(stBodyC,  text) {font=fnRr16;col=0;currel=CC;xSpace=1;}
 // Units
-STYLE(stUr,    text) {font=fnRl48;col=0;currel=CC;xSpace=-4;}
-STYLE(stUs,    text) {font=fnRl24;col=0;currel=CC;xSpace=-4;}
+STYLE(stUr,     text) {font=fnRl48;col=0;currel=CC;xSpace=-4;}
+STYLE(stUs,     text) {font=fnRl24;col=0;currel=CC;xSpace=-4;}
 // Text Icons
 // 15 px
-STYLE(stI15t,  text) {font=fnIc15;col=0;currel=CC;}
+STYLE(stI15t,   text) {font=fnIc15;col=0;currel=CC;}
 // 24 px
-STYLE(stI24b,  text) {font=fnIc24;col=0;currel=CC;}
-STYLE(stI24p,  text) {font=fnIc24;col=0;currel=CC;}
-STYLE(stI24s,  text) {font=fnIc24;col=0;currel=CC;}
-STYLE(stI24op, text) {font=fnIc24;col=0;currel=CC;}
-STYLE(stI24os, text) {font=fnIc24;col=0;currel=CC;}
-STYLE(stI24ob, text) {font=fnIc24;col=0;currel=CC;}
-STYLE(stI24e, text) {font=fnIc24;col=0;currel=CC;}
-STYLE(stI24oe, text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24b,   text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24p,   text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24s,   text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24op,  text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24os,  text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24ob,  text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24e,   text) {font=fnIc24;col=0;currel=CC;}
+STYLE(stI24oe,  text) {font=fnIc24;col=0;currel=CC;}
 // Text Buttons
 // 35 px
-STYLE(stB35p,  text) {font=fnBt35;col=0;currel=TL;}
-STYLE(stB35s,  text) {font=fnBt35;col=0;currel=TL;}
-STYLE(stB35po, text) {font=fnBt35;col=0;currel=TL;}
-STYLE(stB35so, text) {font=fnBt35;col=0;currel=TL;}
-STYLE(stB35sh, text) {font=fnBt35;col=0;opacity=15;currel=TL;}
-STYLE(stB35b,  text) {font=fnBt35;col=0;currel=TL;}
+STYLE(stB35p,   text) {font=fnBt35;col=0;currel=TL;}
+STYLE(stB35s,   text) {font=fnBt35;col=0;currel=TL;}
+STYLE(stB35po,  text) {font=fnBt35;col=0;currel=TL;}
+STYLE(stB35so,  text) {font=fnBt35;col=0;currel=TL;}
+STYLE(stB35sh,  text) {font=fnBt35;col=0;opacity=15;currel=TL;}
+STYLE(stB35b,   text) {font=fnBt35;col=0;currel=TL;}
 // 45 px
-STYLE(stB45p,  text) {font=fnBt45;col=0;currel=TL;}
-STYLE(stB45s,  text) {font=fnBt45;col=0;currel=TL;}
-STYLE(stB45po, text) {font=fnBt45;col=0;currel=TL;}
-STYLE(stB45so, text) {font=fnBt45;col=0;currel=TL;}
-STYLE(stB45sh, text) {font=fnBt45;col=0;opacity=15;currel=TL;}
+STYLE(stB45p,   text) {font=fnBt45;col=0;currel=TL;}
+STYLE(stB45s,   text) {font=fnBt45;col=0;currel=TL;}
+STYLE(stB45po,  text) {font=fnBt45;col=0;currel=TL;}
+STYLE(stB45so,  text) {font=fnBt45;col=0;currel=TL;}
+STYLE(stB45sh,  text) {font=fnBt45;col=0;opacity=15;currel=TL;}
 // Text Shapes
-STYLE(stS10,   text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
-STYLE(stS109,  text) {font=fnSh1e;col=0;currel=TL;opacity=38;rotate=90;}
-STYLE(stS10h,  text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
-STYLE(stS10h9, text) {font=fnSh1e;col=0;currel=TL;opacity=38;rotate=90;}
-STYLE(stS10s,  text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
-STYLE(stS10E,  text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
-STYLE(stS10E9, text) {font=fnSh1e;col=0;currel=TL;opacity=38;rotate=90;}
-STYLE(stS10f,  text) {font=fnSh1f;col=0;currel=TL;opacity=38;}
-STYLE(stS10f9, text) {font=fnSh1f;col=0;currel=TL;opacity=38;rotate=90;}
+STYLE(stS10,    text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
+STYLE(stS109,   text) {font=fnSh1e;col=0;currel=TL;opacity=38;rotate=90;}
+STYLE(stS10h,   text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
+STYLE(stS10h9,  text) {font=fnSh1e;col=0;currel=TL;opacity=38;rotate=90;}
+STYLE(stS10s,   text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
+STYLE(stS10E,   text) {font=fnSh1e;col=0;currel=TL;opacity=38;}
+STYLE(stS10E9,  text) {font=fnSh1e;col=0;currel=TL;opacity=38;rotate=90;}
+STYLE(stS10f,   text) {font=fnSh1f;col=0;currel=TL;opacity=38;}
+STYLE(stS10f9,  text) {font=fnSh1f;col=0;currel=TL;opacity=38;rotate=90;}
 // Text Errors
 STYLE(stS10fe,  text) {font=fnSh1f;col=0;currel=TL;}
 STYLE(stS10fe9, text) {font=fnSh1f;col=0;currel=TL;rotate=90;}
-STYLE(stXxlE,  text) {font=fnRl80;col=0;currel=CC;}
-STYLE(stXlE,   text) {font=fnRl54;col=0;currel=CC;}
-STYLE(stLE,    text) {font=fnRl48;col=0;currel=CC;xSpace=1;}
-STYLE(stSubtE, text) {font=fnRr14;col=0;currel=TL;xSpace=1;}
-STYLE(stUrE,   text) {font=fnRl48;col=0;currel=CC;xSpace=-4;}
-STYLE(stUsE,   text) {font=fnRl24;col=0;currel=CC;xSpace=-4;}
+STYLE(stXxlE,   text) {font=fnRl80;col=0;currel=CC;}
+STYLE(stXlE,    text) {font=fnRl54;col=0;currel=CC;}
+STYLE(stLE,     text) {font=fnRl48;col=0;currel=CC;xSpace=1;}
+STYLE(stSubtE,  text) {font=fnRr14;col=0;currel=TL;xSpace=1;}
+STYLE(stUrE,    text) {font=fnRl48;col=0;currel=CC;xSpace=-4;}
+STYLE(stUsE,    text) {font=fnRl24;col=0;currel=CC;xSpace=-4;}
 // Image
-STYLE(siIcon, image){currel=CC;}
-STYLE(siTL,   image){currel=TL;}
-STYLE(siTLe1, image){currel=TL;opacity=5;}
-STYLE(siTLe4, image){currel=TL;opacity=9;}
+STYLE(siCC,     image){currel=CC;}
+STYLE(siTL,     image){currel=TL;}
 
 
 ////
