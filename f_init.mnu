@@ -8,7 +8,6 @@ FUNC(f_Init) {
   INC("EMMC/_inc.mnu");
 
   RUN(f_InitInt);
-  
   RUN(f_InitStart);
 }
 
@@ -22,6 +21,7 @@ FUNC(f_InitInt) {
 
 FUNC(f_InitStart) {
 
+  RUN(_cLoadCol);
   RUN(_cReloadCol);
   RUN(_cReloadTheme);
 
