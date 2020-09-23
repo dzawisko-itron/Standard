@@ -13,7 +13,7 @@ FUNC(f_Init) {
 }
 
 FUNC(f_InitDbg) {
-  LOAD(_iCh4,10000);
+  //LOAD(_iCh4,10000);
 
 
 }

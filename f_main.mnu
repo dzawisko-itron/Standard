@@ -13,7 +13,9 @@ FUNC(f_Main) {
 
 FUNC(f_GetData) {
   RUN(_iSetIT);
-
+  RUN(_iSetT1);
+  RUN(_iSetT2);
+  
 }
 
 

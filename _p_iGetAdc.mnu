@@ -5,22 +5,34 @@
 //                and read data from CN3 (I2C ADC).
 //                
 //                All variables and functions starts with _i
-//    
+//                Data:
+//                Ch4 - thermistor: _iI; _iI1
+//                Ch3
+//                Ch2
+//                Ch1
+//
+//                
 
 ////
 // Variables
 
 // ADC channels
-VAR(_iCh1, 0, S32);
-VAR(_iCh2, 0, S32);
-VAR(_iCh3, 0, S32);
-VAR(_iCh4, 0, S32);
+VAR(_iCh1, 100, S32);
+VAR(_iCh2, 100, S32);
+VAR(_iCh3, 100, S32);
+VAR(_iCh4, 1800, S32);
+VAR(_iAdc, 0, S32);
 // Bits high & low
 VAR(_iBh, 0, U8);
 VAR(_iBl, 0, U8);
-// Kelvin
-VAR(_iKelv,273.15,FLT4);
+// channels errors
+VAR(_iEr1, 0, U8);
+VAR(_iEr2, 0, U8);
+VAR(_iEr3, 0, U8);
+VAR(_iEr4, 0, U8);
 // Internal Thermistor
+VAR(_iI,  0, FLT4);
+VAR(_iI1, 0, FLT1);
 VAR(_iIfact,13198388.6719,FLT4); //52798388.6719 - 16 bits, 13198388.6719 - 14 bits
 VAR(_iIRtd,0,FLT4);
 VAR(_iIRt,0,FLT4);
@@ -33,14 +45,47 @@ VAR(_iIBeta,4000,FLT4);
 VAR(_iITrm,298.15,FLT4);
 VAR(_iI,22,FLT4);
 VAR(_iI1,0,FLT1);
-VAR(_iIBeta,4000,FLT4);
-VAR(_iITrm,298.15,FLT4);
-VAR(_iI,22,FLT4);
-VAR(_iI1,0,FLT1);
+// Kelvin
+VAR(_iKelv,273.15,FLT4);
+// Thermocouples
+VAR(_iT1r,0,FLT4);
+VAR(_iT2r,0,FLT4);
+VAR(_iT1a,0,FLT2);       
+VAR(_iT2a,0,FLT2); 
+VAR(_iT11,0,FLT1);       
+VAR(_iT21,0,FLT1);
+VAR(_iT10,0,S16);       
+VAR(_iT20,0,S16);  
+VAR(_iT1ar,0,FLT2,10);       
+VAR(_iT2ar,0,FLT2,10);
+VAR(_iT1p,0,U8);   
+VAR(_iT2p,0,U8);
+VAR(_iTfilt,50,U8);
+VAR(_iTsamp,8,U8); 
+VAR(_iTfact,1.28,FLT4); // 14 bits, 8 gain
+VAR(_iTtmp,0,FLT2);
+VAR(_iTlp,0,U8);
+    
 
 
-
-
+  
+FUNC(fncSetP) {
+ CALC(adc1Vout,_iCh1,cRefVout,"*");     // Vout'
+  CALC(adc1Tmp1,cRefR1,cRefR2,"+");       // (R1+R2)
+  CALC(adc1Tmp1,adc1Tmp1,adc1Vout,"*");   // (R1+R2)*Vout'
+  CALC(adc1Tmp1,adc1Tmp1,cRefVin,"/");    // (R1+R2)*Vout'/Vin
+  CALC(adc1Tmp2,cRefR1,cRefR2,"*");       // R1*R2
+  CALC(adc1Tmp3,cRefR3,adc1Tmp1,"*"); 
+  CALC(adc1Tmp3,adc1Tmp3,cRefRes16,"/");  // Fix Vout' -> Vout
+  CALC(adc1Tmp3,adc1Tmp3,cRefGain,"/");   // Remove gain
+  CALC(adc1Tmp1,adc1Tmp1,cRefRes16,"/");  // Fix Vout' -> Vout
+  CALC(adc1Tmp1,adc1Tmp1,cRefGain,"/");   // Remove gain
+  CALC(adc1Tmp3,adc1Tmp3,adc1Tmp2,"+");
+  CALC(adc1Tmp2,cRefR1,adc1Tmp1,"-"); 
+  CALC(adc1Rt,adc1Tmp3,adc1Tmp2,"/");
+  CALC(adc1Vout,adc1Vout,cRefRes16,"/");  // Fix Vout' -> Vout
+  CALC(adc1Vout,adc1Vout,cRefGain,"/");   // Remove gain
+}
 
 ////
 // Functions
@@ -70,9 +115,10 @@ FUNC(_iGetCh4) {
   IF(_iBh<128?[CALC(_iCh4,_iBh,256,_iBl,"*+");]:[CALC(_iBl,_iBl,255,"^");CALC(_iBh,_iBh,255,"^");CALC(_iCh4,_iBh,256,_iBl,"*+");CALC(_iCh4,"++");CALC(_iCh4,0,_iCh4,"-");]);
 }
 
+// CH 4
 // Calculate thermistor temperature
 FUNC(_iSetIT) {
-  IF(_iCh4>0?[CALC(_iIRtd,_iIfact,_iCh4,"/");]:[EXIT(f_SetTr);]);
+  IF(_iCh4>0?[CALC(_iIRtd,_iIfact,_iCh4,"/");]:[EXIT(_iSetIT);]);
   CALC(_iIRt,_iIRtd,1000,"-");
   CALC(_iIlnfr,_iIRt,_iIRrm,"/");
   IF(_iIlnfr=0?[LOAD(_iIlnfr,1);]);
@@ -84,3 +130,49 @@ FUNC(_iSetIT) {
   LOAD(_iI1,_iI);
 }
 
+// Ch1
+// Calculate thermocouple temperature - 14 bits, 8 gain
+FUNC(_iSetT1) {
+
+  // calculating temp
+  CALC(_iT1r,_iCh1,_iTfact,_iI,"/+");
+  // filteriung data
+  CALC(_iTtmp,_iT1a,_iT1r,"-");
+  IF(_iT1p>=_iTsamp AND _iTtmp>_iTfilt ? [EXIT(_iSetT1);]);
+  // adding new data
+  CALC(_iT1ar,1,"SHIFT");
+  LOAD(_iT1ar.0,_iT1r);
+  IF(_iT1p<_iTsamp ?[CALC(_iT1p,"++");]);
+  // getting average
+  LOAD(_iTlp,0);LOAD(_iTtmp,0);
+  LOOP(_ilSetT1,forever){
+    CALC(_iTtmp,_iTtmp,_iT1ar._iTlp,"+");
+    CALC(_iTlp,"++");
+    IF(_iTlp>=_iT1p ? [EXIT(_ilSetT1);]);
+  }
+  CALC(_iT1a,_iTtmp,_iT1p,"/");
+  LOAD(_iT10,_iT1a);LOAD(_iT11,_iT1a);
+}
+
+// Ch2
+// Calculate thermocouple temperature
+FUNC(_iSetT2) {
+  // calculating temp
+  CALC(_iT2r,_iCh2,_iTfact,_iI,"/+");
+  // filteriung data
+  CALC(_iTtmp,_iT2a,_iT2r,"-");
+  IF(_iT2p>=_iTsamp AND _iTtmp>_iTfilt ? [EXIT(_iSetT2);]);
+  // adding new data
+  CALC(_iT2ar,1,"SHIFT");
+  LOAD(_iT2ar.0,_iT2r);
+  IF(_iT2p<_iTsamp ?[CALC(_iT2p,"++");]);
+  // getting average
+  LOAD(_iTlp,0);LOAD(_iTtmp,0);
+  LOOP(_ilSetT2,forever){
+    CALC(_iTtmp,_iTtmp,_iT2ar._iTlp,"+");
+    CALC(_iTlp,"++");
+    IF(_iTlp>=_iT2p ? [EXIT(_ilSetT2);]);
+  }
+  CALC(_iT2a,_iTtmp,_iT2p,"/");
+  LOAD(_iT20,_iT2a);LOAD(_iT21,_iT2a);
+}
