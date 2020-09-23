@@ -5,6 +5,10 @@
 //                to build pages according to Google Material Design
 //                
 //                All variables and functions starts with _c
+//
+//                Please use _cOpen & _cBack functions to open and leave the theme menu page
+//
+//                Please use the styles from that plugin to build a application pages
 //                
 
 
@@ -12,14 +16,16 @@
 //Variables
 
 // colours arrays
-VAR(_cl,0,U32,22,10);
-VAR(_cMax,21,U8);
+VAR(_cl,0,U32,25,10);
+VAR(_cn,\\ff,U8,25,20);
+VAR(_cMax,24,U8);
 // primary colour
-VAR(_cp,4,U8);
+VAR(_cp,4,S8E);
 // secondary colour
-VAR(_cs,14,U8);
+VAR(_cs,14,S8E);
 // theme type   0 - light   1 - dark  2 - dark branded
-VAR(_ct,0,U8);
+VAR(_ct,0,S8E);
+VAR(_ctn,\\ff,U8,3,15);
 VAR(_cpointer,"_cReloadT",TXT);
 // elevation base
 VAR(_cwhite,\\FFFFFF,U32);
@@ -60,6 +66,8 @@ VAR(_ce12,14,U8);
 VAR(_ce16,15,U8);
 VAR(_ce24,16,U8);
 VAR(_ce30,20,U8);
+// Temporary variables
+VAR(_cttmp,"",TXT);
 
 
 ////
@@ -99,10 +107,14 @@ STYLE(stMenuT,  text) {font=fnRm20;col=0;currel=CL;xSpace=1;}
 STYLE(stXxl,    text) {font=fnRl80;col=0;currel=CC;}
 STYLE(stXl,     text) {font=fnRl54;col=0;currel=CC;}
 STYLE(stL,      text) {font=fnRl48;col=0;currel=CC;xSpace=1;}
-STYLE(stM,      text) {font=fnRl32;col=0;currel=CC;xSpace=1;}
+STYLE(stM,      text) {font=fnRl32;col=0;currel=CC;xSpace=0;}
 STYLE(stSubt,   text) {font=fnRr14;col=0;currel=TL;xSpace=1;}
 STYLE(stBody,   text) {font=fnRr16;col=0;currel=TL;xSpace=1;}
 STYLE(stBodyC,  text) {font=fnRr16;col=0;currel=CC;xSpace=1;}
+STYLE(stSubtC,  text) {font=fnRr14;col=0;currel=CC;xSpace=1;}
+STYLE(stO,      text) {font=fnRr32;col=0;currel=CC;xSpace=0;}
+STYLE(stOp,     text) {font=fnRr32;col=0;currel=CC;xSpace=0;}
+STYLE(stOs,     text) {font=fnRr32;col=0;currel=CC;xSpace=0;}
 // Units
 STYLE(stUr,     text) {font=fnRl48;col=0;currel=CC;xSpace=-4;}
 STYLE(stUs,     text) {font=fnRl24;col=0;currel=CC;xSpace=-4;}
@@ -163,6 +175,36 @@ STYLE(siTL,     image){currel=TL;}
 // 0 200; 1 on 200; 2 500; 3 on 500; 4 700; 5 on 700; 6 P dark; 7 on P dark; 8 branded; 9 P Light
 FUNC(_cLoadCol){
 
+  LOAD(_ctn.0,%t% "Light");
+  LOAD(_ctn.1,%t% "Dark");
+  LOAD(_ctn.2,%t% "Branded");
+
+  LOAD(_cn.0,%t% "Red");
+  LOAD(_cn.1,%t% "Pink");
+  LOAD(_cn.2,%t% "Vibrant Pink");
+  LOAD(_cn.3,%t% "Purple");
+  LOAD(_cn.4,%t% "Deep Purple");
+  LOAD(_cn.5,%t% "Indigo");
+  LOAD(_cn.6,%t% "Deep Blue");
+  LOAD(_cn.7,%t% "Blue");
+  LOAD(_cn.8,%t% "Light Blue");
+  LOAD(_cn.9,%t% "Cyan");
+  LOAD(_cn.10,%t% "Teal");
+  LOAD(_cn.11,%t% "Green");
+  LOAD(_cn.12,%t% "Light Green");
+  LOAD(_cn.13,%t% "Lime");
+  LOAD(_cn.14,%t% "Yellow");
+  LOAD(_cn.15,%t% "Amber");
+  LOAD(_cn.16,%t% "Sepia Orange");
+  LOAD(_cn.17,%t% "Orange");
+  LOAD(_cn.18,%t% "Deep Orange");
+  LOAD(_cn.19,%t% "Brown");
+  LOAD(_cn.20,%t% "Grey");
+  LOAD(_cn.21,%t% "Blue Grey");
+  LOAD(_cn.22,%t% "Indigo Grey");
+  LOAD(_cn.23,%t% "Cool Grey");
+  LOAD(_cn.24,%t% "Warm Grey");
+
   //  0 Red
   LOAD(_cl.0.0,\\EF9A9A);   LOAD(_cl.0.1,\\000000);
   LOAD(_cl.0.2,\\F44336);   LOAD(_cl.0.3,\\FFFFFF);
@@ -175,144 +217,144 @@ FUNC(_cLoadCol){
   LOAD(_cl.1.4,\\C2185B);   LOAD(_cl.1.5,\\FFFFFF);
   LOAD(_cl.1.6,\\B0003A);   LOAD(_cl.1.7,\\FFFFFF); //880E4F
   LOAD(_cl.1.8,\\291217);   LOAD(_cl.1.9,\\ff6090);
-  //  2 Purple
-  LOAD(_cl.2.0,\\CE93D8);   LOAD(_cl.2.1,\\000000);
-  LOAD(_cl.2.2,\\9C27B0);   LOAD(_cl.2.3,\\FFFFFF);
-  LOAD(_cl.2.4,\\7B1FA2);   LOAD(_cl.2.5,\\FFFFFF);
-  LOAD(_cl.2.6,\\6a0080);   LOAD(_cl.2.7,\\FFFFFF); //4A148C
-  LOAD(_cl.2.8,\\1d1320);   LOAD(_cl.2.9,\\d05ce3);
-  //  3 Deep Purple
-  LOAD(_cl.3.0,\\B39DDB);   LOAD(_cl.3.1,\\000000);
-  LOAD(_cl.3.2,\\673AB7);   LOAD(_cl.3.3,\\FFFFFF);
-  LOAD(_cl.3.4,\\512DA8);   LOAD(_cl.3.5,\\FFFFFF);
-  LOAD(_cl.3.6,\\320b86);   LOAD(_cl.3.7,\\FFFFFF); //311B92
-  LOAD(_cl.3.8,\\171421);   LOAD(_cl.3.9,\\9a67ea);
-  //  4 Indigo
-  LOAD(_cl.4.0,\\9FA8DA);   LOAD(_cl.4.1,\\000000);
-  LOAD(_cl.4.2,\\3F51B5);   LOAD(_cl.4.3,\\FFFFFF);
-  LOAD(_cl.4.4,\\303F9F);   LOAD(_cl.4.5,\\FFFFFF);
-  LOAD(_cl.4.6,\\002984);   LOAD(_cl.4.7,\\FFFFFF); //1A237E
-  LOAD(_cl.4.8,\\141521);   LOAD(_cl.4.9,\\757de8);
-  //  5 Blue
-  LOAD(_cl.5.0,\\90CAF9);   LOAD(_cl.5.1,\\000000);
-  LOAD(_cl.5.2,\\2196F3);   LOAD(_cl.5.3,\\000000);
-  LOAD(_cl.5.4,\\1976D2);   LOAD(_cl.5.5,\\FFFFFF);
-  LOAD(_cl.5.6,\\0069c0);   LOAD(_cl.5.7,\\FFFFFF); //0D47A1
-  LOAD(_cl.5.8,\\121d2b);   LOAD(_cl.5.9,\\6ec6ff);
-  //  6 Light Blue
-  LOAD(_cl.6.0,\\81D4FA);   LOAD(_cl.6.1,\\000000);
-  LOAD(_cl.6.2,\\03A9F4);   LOAD(_cl.6.3,\\000000);
-  LOAD(_cl.6.4,\\0288D1);   LOAD(_cl.6.5,\\FFFFFF);
-  LOAD(_cl.6.6,\\007ac1);   LOAD(_cl.6.7,\\000000); //01579B
-  LOAD(_cl.6.8,\\121f2b);   LOAD(_cl.6.9,\\67daff);
-  //  7 Cyan
-  LOAD(_cl.7.0,\\80DEEA);   LOAD(_cl.7.1,\\000000);
-  LOAD(_cl.7.2,\\00BCD4);   LOAD(_cl.7.3,\\000000);
-  LOAD(_cl.7.4,\\0097A7);   LOAD(_cl.7.5,\\FFFFFF);
-  LOAD(_cl.7.6,\\008ba3);   LOAD(_cl.7.7,\\FFFFFF); //006064
-  LOAD(_cl.7.8,\\122226);   LOAD(_cl.7.9,\\62efff);
-  //  8 Teal
-  LOAD(_cl.8.0,\\80CBC4);   LOAD(_cl.8.1,\\000000);
-  LOAD(_cl.8.2,\\009688);   LOAD(_cl.8.3,\\FFFFFF);
-  LOAD(_cl.8.4,\\00796B);   LOAD(_cl.8.5,\\FFFFFF);
-  LOAD(_cl.8.6,\\00675b);   LOAD(_cl.8.7,\\FFFFFF); //004D40
-  LOAD(_cl.8.8,\\121d1b);   LOAD(_cl.8.9,\\52c7b8);
-  //  9 Green
-  LOAD(_cl.9.0,\\A5D6A7);   LOAD(_cl.9.1,\\000000);
-  LOAD(_cl.9.2,\\4CAF50);   LOAD(_cl.9.3,\\000000);
-  LOAD(_cl.9.4,\\388E3C);   LOAD(_cl.9.5,\\FFFFFF);
-  LOAD(_cl.9.6,\\087f23);   LOAD(_cl.9.7,\\FFFFFF); //1B5E20
-  LOAD(_cl.9.8,\\152015);   LOAD(_cl.9.9,\\80e27e);
-  // 10 Light Green
-  LOAD(_cl.10.0,\\C5E1A5);   LOAD(_cl.10.1,\\000000);
-  LOAD(_cl.10.2,\\8BC34A);   LOAD(_cl.10.3,\\000000);
-  LOAD(_cl.10.4,\\689F38);   LOAD(_cl.10.5,\\000000);
-  LOAD(_cl.10.6,\\5a9216);   LOAD(_cl.10.7,\\000000); //33691E
-  LOAD(_cl.10.8,\\1b2315);   LOAD(_cl.10.9,\\bef67a);
-  // 11 Lime
-  LOAD(_cl.11.0,\\E6EE9C);   LOAD(_cl.11.1,\\000000);
-  LOAD(_cl.11.2,\\CDDC39);   LOAD(_cl.11.3,\\000000);
-  LOAD(_cl.11.4,\\AFB42B);   LOAD(_cl.11.5,\\000000);
-  LOAD(_cl.11.6,\\99aa00);   LOAD(_cl.11.7,\\000000); //827717
-  LOAD(_cl.11.8,\\252713);   LOAD(_cl.11.9,\\ffff6e);
-  // 12 Yellow
-  LOAD(_cl.12.0,\\FFF59D);   LOAD(_cl.12.1,\\000000);
-  LOAD(_cl.12.2,\\FFEB3B);   LOAD(_cl.12.3,\\000000);
-  LOAD(_cl.12.4,\\FBC02D);   LOAD(_cl.12.5,\\000000);
-  LOAD(_cl.12.6,\\c8b900);   LOAD(_cl.12.7,\\000000); //800 - F9A825; 900 - F57F17
-  LOAD(_cl.12.8,\\2d2914);   LOAD(_cl.12.9,\\ffff72);
-  // 13 Amber
-  LOAD(_cl.13.0,\\FFE082);   LOAD(_cl.13.1,\\000000);
-  LOAD(_cl.13.2,\\FFC107);   LOAD(_cl.13.3,\\000000);
-  LOAD(_cl.13.4,\\FFA000);   LOAD(_cl.13.5,\\000000);
-  LOAD(_cl.13.6,\\c79100);   LOAD(_cl.13.7,\\000000); //800 - FF8F00; 900 - FF6F00
-  LOAD(_cl.13.8,\\2d2312);   LOAD(_cl.13.9,\\fff350);
-  // 14 Orange
-  LOAD(_cl.14.0,\\FFCC80);   LOAD(_cl.14.1,\\000000);
-  LOAD(_cl.14.2,\\FF9800);   LOAD(_cl.14.3,\\000000);
-  LOAD(_cl.14.4,\\F57C00);   LOAD(_cl.14.5,\\000000);
-  LOAD(_cl.14.6,\\c66900);   LOAD(_cl.14.7,\\000000); //E65100
-  LOAD(_cl.14.8,\\2d1d12);   LOAD(_cl.14.9,\\ffc947);
-  // 15 Deep Orange
-  LOAD(_cl.15.0,\\FFAB91);   LOAD(_cl.15.1,\\000000);
-  LOAD(_cl.15.2,\\FF5722);   LOAD(_cl.15.3,\\000000);
-  LOAD(_cl.15.4,\\E64A19);   LOAD(_cl.15.5,\\FFFFFF);
-  LOAD(_cl.15.6,\\c41c00);   LOAD(_cl.15.7,\\FFFFFF); //BF360C
-  LOAD(_cl.15.8,\\2d1612);   LOAD(_cl.15.9,\\ff8a50);
-  // 16 Brown
-  LOAD(_cl.16.0,\\BCAAA4);   LOAD(_cl.16.1,\\000000);
-  LOAD(_cl.16.2,\\795548);   LOAD(_cl.16.3,\\FFFFFF);
-  LOAD(_cl.16.4,\\5D4037);   LOAD(_cl.16.5,\\FFFFFF);
-  LOAD(_cl.16.6,\\4b2c20);   LOAD(_cl.16.7,\\FFFFFF); //3E2723
-  LOAD(_cl.16.8,\\191514);   LOAD(_cl.16.9,\\a98274);
-  // 17 Grey
-  LOAD(_cl.17.0,\\EEEEEE);   LOAD(_cl.17.1,\\000000);
-  LOAD(_cl.17.2,\\9E9E9E);   LOAD(_cl.17.3,\\000000);
-  LOAD(_cl.17.4,\\616161);   LOAD(_cl.17.5,\\FFFFFF);
-  LOAD(_cl.17.6,\\707070);   LOAD(_cl.17.7,\\FFFFFF); //212121
-  LOAD(_cl.17.8,\\1e1e1e);   LOAD(_cl.17.9,\\cfcfcf);
-  // 18 Blue Grey
-  LOAD(_cl.18.0,\\B0BEC5);   LOAD(_cl.18.1,\\000000);
-  LOAD(_cl.18.2,\\607D8B);   LOAD(_cl.18.3,\\FFFFFF);
-  LOAD(_cl.18.4,\\455A64);   LOAD(_cl.18.5,\\FFFFFF);
-  LOAD(_cl.18.6,\\34515e);   LOAD(_cl.18.7,\\FFFFFF); //263238
-  LOAD(_cl.18.8,\\161a1b);   LOAD(_cl.18.9,\\8eacbb);
-  // 19 Light Blue Grey 
-  LOAD(_cl.19.0,\\BCCCDC);   LOAD(_cl.19.1,\\000000);
-  LOAD(_cl.19.2,\\627D98);   LOAD(_cl.19.3,\\FFFFFF);
-  LOAD(_cl.19.4,\\334E68);   LOAD(_cl.19.5,\\FFFFFF);
-  LOAD(_cl.19.6,\\35516a);   LOAD(_cl.19.7,\\FFFFFF);
-  LOAD(_cl.19.8,\\102A43);   LOAD(_cl.19.9,\\91adca);
-  // 20 Cool Grey
-  LOAD(_cl.20.0,\\CBD2D9);   LOAD(_cl.20.1,\\000000);
-  LOAD(_cl.20.2,\\616E7C);   LOAD(_cl.20.3,\\FFFFFF);
-  LOAD(_cl.20.4,\\3E4C59);   LOAD(_cl.20.5,\\FFFFFF);
-  LOAD(_cl.20.6,\\364350);   LOAD(_cl.20.7,\\FFFFFF);
-  LOAD(_cl.20.8,\\1F2923);   LOAD(_cl.20.9,\\8f9cab);
-  // 21 Warm Grey
-  LOAD(_cl.21.0,\\D3CEC4);   LOAD(_cl.21.1,\\000000);
-  LOAD(_cl.21.2,\\857f72);   LOAD(_cl.21.3,\\FFFFFF);
-  LOAD(_cl.21.4,\\504A40);   LOAD(_cl.21.5,\\FFFFFF);
-  LOAD(_cl.21.6,\\585347);   LOAD(_cl.21.7,\\FFFFFF);
-  LOAD(_cl.21.8,\\272410);   LOAD(_cl.21.9,\\b5aea0);
-  // 19 Vibrant Blue
-  //LOAD(_cl.19.0,\\6f63ff);   LOAD(_cl.19.1,\\000000);
-  //LOAD(_cl.19.2,\\0336ff);   LOAD(_cl.19.3,\\FFFFFF);
-  //LOAD(_cl.19.4,\\0008ca);   LOAD(_cl.19.5,\\FFFFFF);
-  //LOAD(_cl.19.6,\\0008ca);   LOAD(_cl.19.7,\\FFFFFF);
-  //LOAD(_cl.19.8,\\131421);   LOAD(_cl.19.9,\\6f63ff);
-  // 20 Sepia Orange
-  //LOAD(_cl.20.0,\\ffdc65);   LOAD(_cl.20.1,\\000000);
-  //LOAD(_cl.20.2,\\f9aa33);   LOAD(_cl.20.3,\\000000);
-  //LOAD(_cl.20.4,\\c77b00);   LOAD(_cl.20.5,\\000000);
-  //LOAD(_cl.20.6,\\c77b00);   LOAD(_cl.20.7,\\000000);
-  //LOAD(_cl.20.8,\\2d1f16);   LOAD(_cl.20.9,\\ffdc65);
-  // 21 Vibrant Pink
-  //LOAD(_cl.21.0,\\ff5c93);   LOAD(_cl.21.1,\\000000);
-  //LOAD(_cl.21.2,\\ff0266);   LOAD(_cl.21.3,\\000000);
-  //LOAD(_cl.21.4,\\c5003c);   LOAD(_cl.21.5,\\FFFFFF);
-  //LOAD(_cl.21.6,\\c5003c);   LOAD(_cl.21.7,\\FFFFFF);
-  //LOAD(_cl.21.8,\\2a1318);   LOAD(_cl.21.9,\\ff5c93);
+  //  1 Vibrant Pink
+  LOAD(_cl.2.0,\\ff5c93);   LOAD(_cl.2.1,\\000000);
+  LOAD(_cl.2.2,\\ff0266);   LOAD(_cl.2.3,\\000000);
+  LOAD(_cl.2.4,\\c5003c);   LOAD(_cl.2.5,\\FFFFFF);
+  LOAD(_cl.2.6,\\c5003c);   LOAD(_cl.2.7,\\FFFFFF);
+  LOAD(_cl.2.8,\\2a1318);   LOAD(_cl.2.9,\\ff5c93);
+  //  3 Purple
+  LOAD(_cl.3.0,\\CE93D8);   LOAD(_cl.3.1,\\000000);
+  LOAD(_cl.3.2,\\9C27B0);   LOAD(_cl.3.3,\\FFFFFF);
+  LOAD(_cl.3.4,\\7B1FA2);   LOAD(_cl.3.5,\\FFFFFF);
+  LOAD(_cl.3.6,\\6a0080);   LOAD(_cl.3.7,\\FFFFFF); //4A148C
+  LOAD(_cl.3.8,\\1d1320);   LOAD(_cl.3.9,\\d05ce3);
+  //  4 Deep Purple
+  LOAD(_cl.4.0,\\B39DDB);   LOAD(_cl.4.1,\\000000);
+  LOAD(_cl.4.2,\\673AB7);   LOAD(_cl.4.3,\\FFFFFF);
+  LOAD(_cl.4.4,\\512DA8);   LOAD(_cl.4.5,\\FFFFFF);
+  LOAD(_cl.4.6,\\320b86);   LOAD(_cl.4.7,\\FFFFFF); //311B92
+  LOAD(_cl.4.8,\\171421);   LOAD(_cl.4.9,\\9a67ea);
+  //  5 Indigo
+  LOAD(_cl.5.0,\\9FA8DA);   LOAD(_cl.5.1,\\000000);
+  LOAD(_cl.5.2,\\3F51B5);   LOAD(_cl.5.3,\\FFFFFF);
+  LOAD(_cl.5.4,\\303F9F);   LOAD(_cl.5.5,\\FFFFFF);
+  LOAD(_cl.5.6,\\002984);   LOAD(_cl.5.7,\\FFFFFF); //1A237E
+  LOAD(_cl.5.8,\\141521);   LOAD(_cl.5.9,\\757de8);
+  //  6 Deep blue
+  LOAD(_cl.6.0,\\6f63ff);   LOAD(_cl.6.1,\\000000);
+  LOAD(_cl.6.2,\\0336ff);   LOAD(_cl.6.3,\\FFFFFF);
+  LOAD(_cl.6.4,\\0008ca);   LOAD(_cl.6.5,\\FFFFFF);
+  LOAD(_cl.6.6,\\0008ca);   LOAD(_cl.6.7,\\FFFFFF);
+  LOAD(_cl.6.8,\\131421);   LOAD(_cl.6.9,\\6f63ff);
+  //  7 Blue
+  LOAD(_cl.7.0,\\90CAF9);   LOAD(_cl.7.1,\\000000);
+  LOAD(_cl.7.2,\\2196F3);   LOAD(_cl.7.3,\\000000);
+  LOAD(_cl.7.4,\\1976D2);   LOAD(_cl.7.5,\\FFFFFF);
+  LOAD(_cl.7.6,\\0069c0);   LOAD(_cl.7.7,\\FFFFFF); //0D47A1
+  LOAD(_cl.7.8,\\121d2b);   LOAD(_cl.7.9,\\6ec6ff);
+  //  8 Light Blue
+  LOAD(_cl.8.0,\\81D4FA);   LOAD(_cl.8.1,\\000000);
+  LOAD(_cl.8.2,\\03A9F4);   LOAD(_cl.8.3,\\000000);
+  LOAD(_cl.8.4,\\0288D1);   LOAD(_cl.8.5,\\FFFFFF);
+  LOAD(_cl.8.6,\\007ac1);   LOAD(_cl.8.7,\\000000); //01579B
+  LOAD(_cl.8.8,\\121f2b);   LOAD(_cl.8.9,\\67daff);
+  //  9 Cyan
+  LOAD(_cl.9.0,\\80DEEA);   LOAD(_cl.9.1,\\000000);
+  LOAD(_cl.9.2,\\00BCD4);   LOAD(_cl.9.3,\\000000);
+  LOAD(_cl.9.4,\\0097A7);   LOAD(_cl.9.5,\\FFFFFF);
+  LOAD(_cl.9.6,\\008ba3);   LOAD(_cl.9.7,\\FFFFFF); //006064
+  LOAD(_cl.9.8,\\122226);   LOAD(_cl.9.9,\\62efff);
+  // 10 Teal
+  LOAD(_cl.10.0,\\80CBC4);   LOAD(_cl.10.1,\\000000);
+  LOAD(_cl.10.2,\\009688);   LOAD(_cl.10.3,\\FFFFFF);
+  LOAD(_cl.10.4,\\00796B);   LOAD(_cl.10.5,\\FFFFFF);
+  LOAD(_cl.10.6,\\00675b);   LOAD(_cl.10.7,\\FFFFFF); //004D40
+  LOAD(_cl.10.8,\\121d1b);   LOAD(_cl.10.9,\\52c7b8);
+  // 11 Green
+  LOAD(_cl.11.0,\\A5D6A7);   LOAD(_cl.11.1,\\000000);
+  LOAD(_cl.11.2,\\4CAF50);   LOAD(_cl.11.3,\\000000);
+  LOAD(_cl.11.4,\\388E3C);   LOAD(_cl.11.5,\\FFFFFF);
+  LOAD(_cl.11.6,\\087f23);   LOAD(_cl.11.7,\\FFFFFF); //1B5E20
+  LOAD(_cl.11.8,\\152015);   LOAD(_cl.11.9,\\80e27e);
+  // 12 Light Green
+  LOAD(_cl.12.0,\\C5E1A5);   LOAD(_cl.12.1,\\000000);
+  LOAD(_cl.12.2,\\8BC34A);   LOAD(_cl.12.3,\\000000);
+  LOAD(_cl.12.4,\\689F38);   LOAD(_cl.12.5,\\000000);
+  LOAD(_cl.12.6,\\5a9216);   LOAD(_cl.12.7,\\000000); //33691E
+  LOAD(_cl.12.8,\\1b2315);   LOAD(_cl.12.9,\\bef67a);
+  // 13 Lime
+  LOAD(_cl.13.0,\\E6EE9C);   LOAD(_cl.13.1,\\000000);
+  LOAD(_cl.13.2,\\CDDC39);   LOAD(_cl.13.3,\\000000);
+  LOAD(_cl.13.4,\\AFB42B);   LOAD(_cl.13.5,\\000000);
+  LOAD(_cl.13.6,\\99aa00);   LOAD(_cl.13.7,\\000000); //827717
+  LOAD(_cl.13.8,\\252713);   LOAD(_cl.13.9,\\ffff6e);
+  // 14 Yellow
+  LOAD(_cl.14.0,\\FFF59D);   LOAD(_cl.14.1,\\000000);
+  LOAD(_cl.14.2,\\FFEB3B);   LOAD(_cl.14.3,\\000000);
+  LOAD(_cl.14.4,\\FBC02D);   LOAD(_cl.14.5,\\000000);
+  LOAD(_cl.14.6,\\c8b900);   LOAD(_cl.14.7,\\000000); //800 - F9A825; 900 - F57F17
+  LOAD(_cl.14.8,\\2d2914);   LOAD(_cl.14.9,\\ffff72);
+  // 15 Amber
+  LOAD(_cl.15.0,\\FFE082);   LOAD(_cl.15.1,\\000000);
+  LOAD(_cl.15.2,\\FFC107);   LOAD(_cl.15.3,\\000000);
+  LOAD(_cl.15.4,\\FFA000);   LOAD(_cl.15.5,\\000000);
+  LOAD(_cl.15.6,\\c79100);   LOAD(_cl.15.7,\\000000); //800 - FF8F00; 900 - FF6F00
+  LOAD(_cl.15.8,\\2d2312);   LOAD(_cl.15.9,\\fff350);
+  // 16 Sepia Orange
+  LOAD(_cl.16.0,\\ffdc65);   LOAD(_cl.16.1,\\000000);
+  LOAD(_cl.16.2,\\f9aa33);   LOAD(_cl.16.3,\\000000);
+  LOAD(_cl.16.4,\\c77b00);   LOAD(_cl.16.5,\\000000);
+  LOAD(_cl.16.6,\\c77b00);   LOAD(_cl.16.7,\\000000);
+  LOAD(_cl.16.8,\\2d1f16);   LOAD(_cl.16.9,\\ffdc65);
+  // 17 Orange
+  LOAD(_cl.17.0,\\FFCC80);   LOAD(_cl.17.1,\\000000);
+  LOAD(_cl.17.2,\\FF9800);   LOAD(_cl.17.3,\\000000);
+  LOAD(_cl.17.4,\\F57C00);   LOAD(_cl.17.5,\\000000);
+  LOAD(_cl.17.6,\\c66900);   LOAD(_cl.17.7,\\000000); //E65100
+  LOAD(_cl.17.8,\\2d1d12);   LOAD(_cl.17.9,\\ffc947);
+  // 18 Deep Orange
+  LOAD(_cl.18.0,\\FFAB91);   LOAD(_cl.18.1,\\000000);
+  LOAD(_cl.18.2,\\FF5722);   LOAD(_cl.18.3,\\000000);
+  LOAD(_cl.18.4,\\E64A19);   LOAD(_cl.18.5,\\FFFFFF);
+  LOAD(_cl.18.6,\\c41c00);   LOAD(_cl.18.7,\\FFFFFF); //BF360C
+  LOAD(_cl.18.8,\\2d1612);   LOAD(_cl.18.9,\\ff8a50);
+  // 19 Brown
+  LOAD(_cl.19.0,\\BCAAA4);   LOAD(_cl.19.1,\\000000);
+  LOAD(_cl.19.2,\\795548);   LOAD(_cl.19.3,\\FFFFFF);
+  LOAD(_cl.19.4,\\5D4037);   LOAD(_cl.19.5,\\FFFFFF);
+  LOAD(_cl.19.6,\\4b2c20);   LOAD(_cl.19.7,\\FFFFFF); //3E2723
+  LOAD(_cl.19.8,\\191514);   LOAD(_cl.19.9,\\a98274);
+  // 20 Grey
+  LOAD(_cl.20.0,\\EEEEEE);   LOAD(_cl.20.1,\\000000);
+  LOAD(_cl.20.2,\\9E9E9E);   LOAD(_cl.20.3,\\000000);
+  LOAD(_cl.20.4,\\616161);   LOAD(_cl.20.5,\\FFFFFF);
+  LOAD(_cl.20.6,\\707070);   LOAD(_cl.20.7,\\FFFFFF); //212121
+  LOAD(_cl.20.8,\\1e1e1e);   LOAD(_cl.20.9,\\cfcfcf);
+  // 21 Blue Grey
+  LOAD(_cl.21.0,\\B0BEC5);   LOAD(_cl.21.1,\\000000);
+  LOAD(_cl.21.2,\\607D8B);   LOAD(_cl.21.3,\\FFFFFF);
+  LOAD(_cl.21.4,\\455A64);   LOAD(_cl.21.5,\\FFFFFF);
+  LOAD(_cl.21.6,\\34515e);   LOAD(_cl.21.7,\\FFFFFF); //263238
+  LOAD(_cl.21.8,\\161a1b);   LOAD(_cl.21.9,\\8eacbb);
+  // 22 Light Blue Grey 
+  LOAD(_cl.22.0,\\BCCCDC);   LOAD(_cl.22.1,\\000000);
+  LOAD(_cl.22.2,\\627D98);   LOAD(_cl.22.3,\\FFFFFF);
+  LOAD(_cl.22.4,\\334E68);   LOAD(_cl.22.5,\\FFFFFF);
+  LOAD(_cl.22.6,\\35516a);   LOAD(_cl.22.7,\\FFFFFF);
+  LOAD(_cl.22.8,\\102A43);   LOAD(_cl.22.9,\\91adca);
+  // 23 Cool Grey
+  LOAD(_cl.23.0,\\CBD2D9);   LOAD(_cl.23.1,\\000000);
+  LOAD(_cl.23.2,\\616E7C);   LOAD(_cl.23.3,\\FFFFFF);
+  LOAD(_cl.23.4,\\3E4C59);   LOAD(_cl.23.5,\\FFFFFF);
+  LOAD(_cl.23.6,\\364350);   LOAD(_cl.23.7,\\FFFFFF);
+  LOAD(_cl.23.8,\\1F2923);   LOAD(_cl.23.9,\\8f9cab);
+  // 24 Warm Grey
+  LOAD(_cl.24.0,\\D3CEC4);   LOAD(_cl.24.1,\\000000);
+  LOAD(_cl.24.2,\\857f72);   LOAD(_cl.24.3,\\FFFFFF);
+  LOAD(_cl.24.4,\\504A40);   LOAD(_cl.24.5,\\FFFFFF);
+  LOAD(_cl.24.6,\\585347);   LOAD(_cl.24.7,\\FFFFFF);
+  LOAD(_cl.24.8,\\272410);   LOAD(_cl.24.9,\\b5aea0);
 }
 
 // Reload colours
@@ -361,9 +403,13 @@ FUNC(_cReloadTheme) {
   LOAD(stXl.col,_consurf._ct);
   LOAD(stL.col,_consurf._ct);
   LOAD(stSubt.col,_consurf._ct);LOAD(stSubt.opacity,_chemp);
+  LOAD(stSubtC.col,_consurf._ct);LOAD(stSubtC.opacity,_chemp);
   LOAD(stBody.col,_consurf._ct);
   LOAD(stBodyC.col,_consurf._ct);
   LOAD(stM.col,_consurf._ct);
+  LOAD(stO.col,_consurf._ct);
+  LOAD(stOp.col,_cprim._ct);
+  LOAD(stOs.col,_csec._ct);
   // section text - errors
   LOAD(stXxlE.col,_conerr._ct);
   LOAD(stXlE.col,_conerr._ct);
@@ -502,4 +548,117 @@ FUNC(_cReloadT2) {
   LOAD(stS10f9.font,fnSh1e); LOAD(stS10f9.col,_cblack);   LOAD(stS10f9.opacity,_cdemp);
   LOAD(stS10E.font,fnSh1f);  LOAD(stS10E.col,_cerr._ct);  LOAD(stS10E.opacity,_csemp);
   LOAD(stS10E9.font,fnSh1f); LOAD(stS10E9.col,_cerr._ct); LOAD(stS10E9.opacity,_csemp);
+}
+
+FUNC(_cBack) {
+  LOAD(nCurPg,0);
+  SHOW(p_Main);
+}
+FUNC(_cOpen) {
+  LOAD(_cttmp,%t% _ctn._ct);  TEXT(_ctMenu1,_cttmp);
+  LOAD(_cttmp,%t% _cn._cp);   TEXT(_ctMenu2,_cttmp);
+  LOAD(_cttmp,%t% _cn._cs);   TEXT(_ctMenu3,_cttmp);
+  SHOW(_cpMenu);
+}
+
+FUNC(_cChgType2) {
+  CALC(_ct,"++");IF(_ct>2?[LOAD(_ct,0);]);
+  LOAD(_cttmp,%t% _ctn._ct);
+  TEXT(_ctMenu1,_cttmp);
+  RUN(_cReloadTheme);
+}
+FUNC(_cChgType1) {
+  CALC(_ct,"--");IF(_ct<0?[LOAD(_ct,2);]);
+  LOAD(_cttmp,%t% _ctn._ct);
+  TEXT(_ctMenu1,_cttmp);
+  RUN(_cReloadTheme);
+}
+FUNC(_cChgPrim2) {
+  CALC(_cp,"++");IF(_cp>_cMax?[LOAD(_cp,0);]);
+  LOAD(_cttmp,%t% _cn._cp);
+  TEXT(_ctMenu2,_cttmp);
+  RUN(_cReloadCol);RUN(_cReloadTheme);
+}
+FUNC(_cChgPrim1) {
+  CALC(_cp,"--");IF(_cp<0?[LOAD(_cp,_cMax);]);
+  LOAD(_cttmp,%t% _cn._cp);
+  TEXT(_ctMenu2,_cttmp);
+  RUN(_cReloadCol);RUN(_cReloadTheme);
+}
+FUNC(_cChgSec2) {
+  CALC(_cs,"++");IF(_cs>_cMax?[LOAD(_cs,0);]);
+  LOAD(_cttmp,%t% _cn._cs);
+  TEXT(_ctMenu3,_cttmp);
+  RUN(_cReloadCol);RUN(_cReloadTheme);
+}
+FUNC(_cChgSec1) {
+  CALC(_cs,"--");IF(_cs<0?[LOAD(_cs,_cMax);]);
+  LOAD(_cttmp,%t% _cn._cs);
+  TEXT(_ctMenu3,_cttmp);
+  RUN(_cReloadCol);RUN(_cReloadTheme);
+}
+
+////
+// Colour Theme Menu Page
+
+PAGE(_cpMenu, spStd) {
+
+  // Top
+  DRAW(_cdTop,480,15,sdTop,0,0);
+  TEXT(_ctTop,"14:27",stTop,20,7);
+  TEXT(_ciUsb,"0",stI15t,435,7);
+  TEXT(_ciWifi,"2",stI15t,453,7);  
+  
+  // Top Bar
+  DRAW(_cdBar,480,45,sdBar,0,15);
+  TEXT(_ctBarS1,"555555555555555555555555",stS10s,0,55);
+  TEXT(_ctBarS2,"555555555555555555555555",stS10s,240,55);
+  TEXT(_ciMenu,"?",stI24b,30,37);     KEY(_ckMenu,_cBack,60,50,TOUCH,30,37);
+  TEXT(_ctBar,"Colour Themes",stBar,60,37);
+  
+  // Top
+  TEXT(_ctMenuT1,"Type: Light / Dark / Branded",stSubtC,230,68);
+  TEXT(_ctMenu1,"Light",stO,240,102);
+  
+  TEXT(_cbMenu11s,"0111113",stB35sh,82,87);
+  TEXT(_cbMenu11b,"0111113",stB35b,80,84);
+  TEXT(_cbMenu11,"4555557",stB35p,80,84);
+  TEXT(_cbMenu11i,"@",stI24ob,110,102);
+  KEY(_ckMenu11,_cChgType1,60,50,TOUCH,110,102);
+  
+  TEXT(_cbMenu12s,"0111113",stB35sh,342,87);
+  TEXT(_cbMenu12b,"0111113",stB35b,340,84);
+  TEXT(_cbMenu12,"4555557",stB35p,340,84);
+  TEXT(_cbMenu12i,"A",stI24ob,370,102);
+  KEY(_ckMenu12,_cChgType2,60,50,TOUCH,370,102);
+  
+  // Middle
+  DRAW(_cdMenuD2,460,2,sdDiv,10,130);
+  TEXT(_ctMenuT2,"Primary colour",stSubtC,240,138);
+  TEXT(_ctMenu2,"Blue",stOp,240,172);
+
+  TEXT(_cbMenu21s,"0111113",stB35sh,82,157);
+  TEXT(_cbMenu21,"0111113",stB35p,80,154);
+  TEXT(_cbMenu21i,"@",stI24op,110,172);
+  KEY(_ckMenu21,_cChgPrim1,60,50,TOUCH,110,172);
+  
+  TEXT(_cbMenu22s,"0111113",stB35sh,342,157);
+  TEXT(_cbMenu22,"0111113",stB35p,340,154);
+  TEXT(_cbMenu22i,"A",stI24op,370,172);
+  KEY(_ckMenu22,_cChgPrim2,60,50,TOUCH,370,172);
+  
+  // Bottom
+  DRAW(_cdMenuD3,460,2,sdDiv,10,200);
+  TEXT(_ctMenuT3,"Secondary colour",stSubtC,240,208);
+  TEXT(_ctMenu3,"Green",stOs,240,242);
+  
+  TEXT(_cbMenu31s,"0111113",stB35sh,82,227);
+  TEXT(_cbMenu31,"0111113",stB35s,80,224);
+  TEXT(_cbMenu31i,"@",stI24os,110,242);
+  KEY(_ckMenu31,_cChgSec1,60,50,TOUCH,110,242);
+  
+  TEXT(_cbMenu32s,"0111113",stB35sh,342,227);
+  TEXT(_cbMenu32,"0111113",stB35s,340,224);
+  TEXT(_cbMenu32i,"A",stI24os,370,242);
+  KEY(_ckMenu32,_cChgSec2,60,50,TOUCH,370,242);
 }

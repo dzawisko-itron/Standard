@@ -4,13 +4,13 @@ Standard.idt
 tw480a.mnu,0
 _inc.mnu,0
 _lib.mnu,0
-_p_cStyle.mnu,0
-_p_iGetAdc.mnu,825
+_p_cStyle.mnu,6915
+_p_iGetAdc.mnu,0
 _setup.mnu,0
 _var.mnu,0
 f_init.mnu,0
 f_main.mnu,0
-p_main.mnu,0
+p_main.mnu,1335
 p_menu.mnu,0
 p_splash.mnu,0
 *Fonts
@@ -44,6 +44,6 @@ _p_cStyle.mnu
 *Disp
 1
 *Time
-1680
+1800
 *Last
-_p_iGetAdc.mnu
+_p_cStyle.mnu

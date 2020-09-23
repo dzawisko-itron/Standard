@@ -6,4 +6,6 @@
 // Timers
 VAR(nTimRefr,500,U16);
 
+// Current page number
+VAR(nCurPg,0,U8); //0 - main
 

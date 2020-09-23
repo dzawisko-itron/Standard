@@ -69,23 +69,23 @@ VAR(_iTlp,0,U8);
 
 
   
-FUNC(fncSetP) {
- CALC(adc1Vout,_iCh1,cRefVout,"*");     // Vout'
-  CALC(adc1Tmp1,cRefR1,cRefR2,"+");       // (R1+R2)
-  CALC(adc1Tmp1,adc1Tmp1,adc1Vout,"*");   // (R1+R2)*Vout'
-  CALC(adc1Tmp1,adc1Tmp1,cRefVin,"/");    // (R1+R2)*Vout'/Vin
-  CALC(adc1Tmp2,cRefR1,cRefR2,"*");       // R1*R2
-  CALC(adc1Tmp3,cRefR3,adc1Tmp1,"*"); 
-  CALC(adc1Tmp3,adc1Tmp3,cRefRes16,"/");  // Fix Vout' -> Vout
-  CALC(adc1Tmp3,adc1Tmp3,cRefGain,"/");   // Remove gain
-  CALC(adc1Tmp1,adc1Tmp1,cRefRes16,"/");  // Fix Vout' -> Vout
-  CALC(adc1Tmp1,adc1Tmp1,cRefGain,"/");   // Remove gain
-  CALC(adc1Tmp3,adc1Tmp3,adc1Tmp2,"+");
-  CALC(adc1Tmp2,cRefR1,adc1Tmp1,"-"); 
-  CALC(adc1Rt,adc1Tmp3,adc1Tmp2,"/");
-  CALC(adc1Vout,adc1Vout,cRefRes16,"/");  // Fix Vout' -> Vout
-  CALC(adc1Vout,adc1Vout,cRefGain,"/");   // Remove gain
-}
+//FUNC(fncSetP) {
+// CALC(adc1Vout,_iCh1,cRefVout,"*");     // Vout'
+//  CALC(adc1Tmp1,cRefR1,cRefR2,"+");       // (R1+R2)
+//  CALC(adc1Tmp1,adc1Tmp1,adc1Vout,"*");   // (R1+R2)*Vout'
+//  CALC(adc1Tmp1,adc1Tmp1,cRefVin,"/");    // (R1+R2)*Vout'/Vin
+//  CALC(adc1Tmp2,cRefR1,cRefR2,"*");       // R1*R2
+//  CALC(adc1Tmp3,cRefR3,adc1Tmp1,"*"); 
+//  CALC(adc1Tmp3,adc1Tmp3,cRefRes16,"/");  // Fix Vout' -> Vout
+//  CALC(adc1Tmp3,adc1Tmp3,cRefGain,"/");   // Remove gain
+//  CALC(adc1Tmp1,adc1Tmp1,cRefRes16,"/");  // Fix Vout' -> Vout
+//  CALC(adc1Tmp1,adc1Tmp1,cRefGain,"/");   // Remove gain
+//  CALC(adc1Tmp3,adc1Tmp3,adc1Tmp2,"+");
+//  CALC(adc1Tmp2,cRefR1,adc1Tmp1,"-"); 
+//  CALC(adc1Rt,adc1Tmp3,adc1Tmp2,"/");
+//  CALC(adc1Vout,adc1Vout,cRefRes16,"/");  // Fix Vout' -> Vout
+//  CALC(adc1Vout,adc1Vout,cRefGain,"/");   // Remove gain
+//}
 
 ////
 // Functions
