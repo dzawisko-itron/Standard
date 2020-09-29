@@ -30,9 +30,9 @@ FUNC(f_InitInt) {
 
 FUNC(f_InitStart) {
 
-  RUN(_cLoadCol);
-  RUN(_cReloadCol);
-  RUN(_cReloadTheme);
+  RUN(_cf_LoadCol);
+  RUN(_cf_ReloadCol);
+  RUN(_cf_ReloadThe);
 
   SHOW(p_Splash);
   

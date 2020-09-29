@@ -1,0 +1,114 @@
+////
+// @FILE:         _p_sSettings.mnu
+// @DESCRIPTION:  Menu
+//                Plugin which allows to build and configure the settings page
+//                
+//                All variables starts with _s, functions _sf_, pages _sp_
+//
+//                Please use _sf_Open & _sf_Back functions to open and leave the theme menu page
+//
+//                That plugin has to be used togehter with _p_cStyle.
+//  
+
+
+////
+// Variables
+
+// Popup info window
+VAR(_sninfo,0,U8);
+
+
+////
+// Functions
+
+FUNC(_sf_Back) {
+
+  LOAD(nCurPg,0);
+  SHOW(p_Main);
+}
+
+FUNC(_sf_Open) {
+
+  SHOW(_sp_Settings);
+}
+
+FUNC(_sf_Info) {
+
+  IF(_sninfo=0?[LOAD(_sninfo,1);SHOW(_sdPopSh,_sdRMenu,_sdRMenu2,_stRMenut,_stRMenul,_stRMenur,_stRMenub,_stRMenu1,_stRMenu2);]:
+    [LOAD(_sninfo,0);HIDE(_sdPopSh,_sdRMenu,_sdRMenu2,_stRMenut,_stRMenul,_stRMenur,_stRMenub,_stRMenu1,_stRMenu2);]);;
+}
+
+////
+// Settings page
+
+PAGE(_sp_Settings, spStd) {
+
+  // Top
+  DRAW(_sdTop,480,15,sdTop,0,0);
+  TEXT(_stTop,"14:27",stTop,20,7);
+  TEXT(_siUsb,"0",stI15t,435,7);
+  TEXT(_siWifi,"2",stI15t,453,7);  
+  
+  // List background
+  DRAW(_sdBack,480,212,sdBoxB,0,60);
+  
+  // Top Bar
+  DRAW(_sdBar,480,45,sdBar,0,15);
+  TEXT(_stBarS1,"555555555555555555555555",stS10s,0,55);
+  TEXT(_stBarS2,"555555555555555555555555",stS10s,240,55);
+  TEXT(_siMenu,"?",stI24b,30,37);     KEY(_skMenu,_sf_Back,60,50,TOUCH,30,37);
+  TEXT(_siInfo,"B",stI24b,458,37);    KEY(_skInfo,_sf_Info,60,50,TOUCH,458,37);
+  TEXT(_stBar,"Settings",stBar,60,37);
+
+  // List 5 rows, 1 column
+//  DRAW(_sdL1,478,41,sdBoxL,1,62);     
+//  DRAW(_sdL2,478,41,sdBoxL,1,104);     
+//  DRAW(_sdL3,478,41,sdBoxL,1,146);  
+//  DRAW(_sdL4,478,41,sdBoxL,1,188);  
+//  DRAW(_sdL5,478,41,sdBoxL,1,230);  
+  
+  // List 5 rows, 2 columns
+//  DRAW(_sdL1,238,41,sdBoxL,1,62);     
+//  DRAW(_sdL2,238,41,sdBoxL,1,104);     
+//  DRAW(_sdL3,238,41,sdBoxL,1,146);  
+//  DRAW(_sdL4,238,41,sdBoxL,1,188);  
+//  DRAW(_sdL5,238,41,sdBoxL,1,230);  
+  
+//  DRAW(_sdL6,239,41,sdBoxL,240,62);
+//  DRAW(_sdL7,239,41,sdBoxL,240,104); 
+//  DRAW(_sdL8,239,41,sdBoxL,240,146);
+//  DRAW(_sdL9,239,41,sdBoxL,240,188);
+//  DRAW(_sdL10,239,41,sdBoxL,240,230);
+  
+  // List 5 rows, 3 columns
+  DRAW(_sdL1,158,41,sdBoxL,1,62);     
+  DRAW(_sdL2,158,41,sdBoxL,1,104);     
+  DRAW(_sdL3,158,41,sdBoxL,1,146);  
+  DRAW(_sdL4,158,41,sdBoxL,1,188);  
+  DRAW(_sdL5,158,41,sdBoxL,1,230);  
+  
+  DRAW(_sdL6,159,41,sdBoxL,160,62);
+  DRAW(_sdL7,159,41,sdBoxL,160,104); 
+  DRAW(_sdL8,159,41,sdBoxL,160,146);
+  DRAW(_sdL9,159,41,sdBoxL,160,188);
+  DRAW(_sdL10,159,41,sdBoxL,160,230);  
+  
+  DRAW(_sdL11,159,41,sdBoxL,320,62);
+  DRAW(_sdL12,159,41,sdBoxL,320,104); 
+  DRAW(_sdL13,159,41,sdBoxL,320,146);
+  DRAW(_sdL14,159,41,sdBoxL,320,188);
+  DRAW(_sdL15,159,41,sdBoxL,320,230);  
+  
+  // Info window
+  DRAW(_sdPopSh,480,272,sdBoxSh,0,0);
+  DRAW(_sdRMenu,280,170,sdBoxS,100,50);
+  DRAW(_sdRMenu2,280,170,sdBoxS2,100,50);
+  TEXT(_stRMenut,"A111111111111111111111111111B",stS10f,98,45);
+  TEXT(_stRMenul,"8888888888888888",stS10f9,95,55);
+  TEXT(_stRMenur,"::::::::::::::::",stS10f9,375,55);
+  TEXT(_stRMenub,"C555555555555555555555555555D",stS10f,98,215);
+  TEXT(_stRMenu1,"Settings",stPopT,105,60);
+  TEXT(_stRMenu2,"Please select the menu option to open submenu",stPop,105,80);
+  HIDE(_sdPopSh,_sdRMenu,_sdRMenu2,_stRMenut,_stRMenul,_stRMenur,_stRMenub,_stRMenu1,_stRMenu2);
+ 
+}

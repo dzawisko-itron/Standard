@@ -9,10 +9,11 @@ INC("EMMC/_lib.mnu");
 INC("EMMC/_p_cStyle.mnu");
 INC("EMMC/_var.mnu");
 INC("EMMC/_p_iGetAdc.mnu");
+INC("EMMC/_p_sSettings.mnu");
 
 // Pages
 INC("EMMC/p_main.mnu");
-INC("EMMC/p_menu.mnu");
+INC("EMMC/p_about.mnu");
 INC("EMMC/p_splash.mnu");
 
 // Functions

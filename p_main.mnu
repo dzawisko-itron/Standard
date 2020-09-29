@@ -15,10 +15,10 @@ VAR(nRMenu,0,U8);
 // Main page
 PAGE(p_Main, spStd) {
 
-  // Debug Keys
-  KEY(kTType,[CALC(_ct,"++");IF(_ct>2?[LOAD(_ct,0);]);RUN(_cReloadTheme);],100,50,TOUCH,140,25);
-  KEY(kTPrim,[CALC(_cp,"++");IF(_cp>_cMax?[LOAD(_cp,0);]);RUN(_cReloadCol);RUN(_cReloadTheme);],100,50,TOUCH,240,25);
-  KEY(kTSecn,[CALC(_cs,"++");IF(_cs>_cMax?[LOAD(_cs,0);]);RUN(_cReloadCol);RUN(_cReloadTheme);],100,50,TOUCH,340,25);  
+// Debug Keys
+//  KEY(kTType,[CALC(_ct,"++");IF(_ct>2?[LOAD(_ct,0);]);RUN(_cf_ReloadThe);],100,50,TOUCH,140,25);
+//  KEY(kTPrim,[CALC(_cp,"++");IF(_cp>_cMax?[LOAD(_cp,0);]);RUN(_cf_ReloadCol);RUN(_cf_ReloadThe);],100,50,TOUCH,240,25);
+//  KEY(kTSecn,[CALC(_cs,"++");IF(_cs>_cMax?[LOAD(_cs,0);]);RUN(_cf_ReloadCol);RUN(_cf_ReloadThe);],100,50,TOUCH,340,25);  
 
   // Top
   DRAW(dTop,480,15,sdTop,0,0);
@@ -112,30 +112,31 @@ PAGE(p_Main, spStd) {
   TEXT(tRMenul,"888888888888888",stS10f9,365,55);
   TEXT(tRMenur,":::::::::::::::",stS10f9,465,55);
   TEXT(tRMenub,"C555555555D",stS10f,368,205);
-  TEXT(tRMenu1,"Programs",stMenu.col,403,70);   TEXT(bIRMenu1,"8",stI24ob,384,70);  KEY(kRMenu1,f_Dummy,100,40,TOUCH,420,70);
-  TEXT(tRMenu2,"PID Graph",stMenu.col,403,110); TEXT(bIRMenu2,"7",stI24ob,384,110); KEY(kRMenu2,f_Dummy,100,40,TOUCH,420,110);
-  TEXT(tRMenu3,"Logs",stMenu.col,403,150);      TEXT(bIRMenu3,":",stI24ob,384,150); KEY(kRMenu3,f_Dummy,100,40,TOUCH,420,150);
-  TEXT(tRMenu4,"Start",stMenu.col,403,190);     TEXT(bIRMenu4,"0",stI24ob,384,190); KEY(kRMenu4,f_Dummy,100,40,TOUCH,420,190);
+  TEXT(tRMenu1,"Programs",stMenu,403,70);   TEXT(bIRMenu1,"8",stI24ob,384,70);  KEY(kRMenu1,f_Dummy,100,40,TOUCH,420,70);
+  TEXT(tRMenu2,"PID Graph",stMenu,403,110); TEXT(bIRMenu2,"7",stI24ob,384,110); KEY(kRMenu2,f_Dummy,100,40,TOUCH,420,110);
+  TEXT(tRMenu3,"Logs",stMenu,403,150);      TEXT(bIRMenu3,":",stI24ob,384,150); KEY(kRMenu3,f_Dummy,100,40,TOUCH,420,150);
+  TEXT(tRMenu4,"Start",stMenu,403,190);     TEXT(bIRMenu4,"0",stI24ob,384,190); KEY(kRMenu4,f_Dummy,100,40,TOUCH,420,190);
   
   HIDE(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,tRMenu4,bIRMenu1,bIRMenu2,bIRMenu3,bIRMenu4,kRMenu1,kRMenu2,kRMenu3,kRMenu4);
   
   // Main menu
   DRAW(dMenu,200,272,sdBoxS,0,0);
   DRAW(dMenu2,200,272,sdBoxS2,0,0);
-  DRAW(dMenuSh,280,272,sdBoxSh,200,0);                                              KEY(kMenuSh,f_OpenMenu,280,272,TOUCH,340,136);
+  DRAW(dMenuSh,280,272,sdBoxSh,200,0);                                          KEY(kMenuSh,f_OpenMenu,280,272,TOUCH,340,136);
   TEXT(tMenur,":::::::::::::::::::::::::::;;",stS10f9,195,0);
-  TEXT(tMenuT,"Oven Application",stMenuT,15,18);                                    KEY(kMenuT,f_OpenMenu,200,40,TOUCH,100,20);
-  DRAW(dMenuD1,190,2,sdDiv,5,40);
-  TEXT(tMenu1,"Setting",stMenu.col,70,60);      TEXT(bIMenu1,"8",stI24ob,30,60);    KEY(kMenu1,f_Dummy,200,30,TOUCH,100,60);
-  TEXT(tMenu2,"Themes",stMenu.col,70,90);       TEXT(bIMenu2,";",stI24ob,29,90);    KEY(kMenu2,f_OpenThemes,200,30,TOUCH,100,90);
-  TEXT(tMenu3,"Programs",stMenu.col,70,120);    TEXT(bIMenu3,"6",stI24ob,29,120);   KEY(kMenu3,f_Dummy,200,30,TOUCH,100,120);
-  TEXT(tMenu4,"PID Graph",stMenu.col,70,150);   TEXT(bIMenu4,"7",stI24ob,29,150);   KEY(kMenu4,f_Dummy,200,30,TOUCH,100,150);
-  TEXT(tMenu5,"Logs",stMenu.col,70,180);        TEXT(bIMenu5,":",stI24ob,30,180);   KEY(kMenu5,f_Dummy,200,30,TOUCH,100,180);
-  TEXT(tMenu6,"Something",stMenu.col,70,210);    TEXT(bIMenu6,"9",stI24ob,30,210);   KEY(kMenu6,f_Dummy,200,30,TOUCH,100,210);
-  DRAW(dMenuD2,190,2,sdDiv,5,235);
-  TEXT(tMenu0,"About",stMenu.col,70,255);       TEXT(bIMenu0,"<",stI24ob,30,255);   KEY(kMenu0,f_Dummy,200,30,TOUCH,100,60);
-  HIDE(dMenu,dMenu2,dMenuSh,kMenuSh,tMenur,tMenuT,kMenuT,dMenuD1,dMenuD2,tMenu1,tMenu2,tMenu3,tMenu4,tMenu5,tMenu6,tMenu0);
-  HIDE(bIMenu1,bIMenu2,bIMenu3,bIMenu4,bIMenu5,bIMenu6,bIMenu0,kMenu1,kMenu2,kMenu3,kMenu4,kMenu5,kMenu6,kMenu0);
+  TEXT(tMenuT,"Oven Application",stMenuT,15,18);                                KEY(kMenuT,f_OpenMenu,200,40,TOUCH,100,20);
+  DRAW(dMenuD1,190,1,sdDiv,5,40);
+  TEXT(tMenu1,"Setting",stMenu,70,60);      TEXT(bIMenu1,"8",stI24ob,30,60);    KEY(kMenu1,f_OpenSett,200,30,TOUCH,100,60);
+  TEXT(tMenu2,"Themes",stMenu,70,90);       TEXT(bIMenu2,";",stI24ob,29,90);    KEY(kMenu2,f_OpenThemes,200,30,TOUCH,100,90);
+  TEXT(tMenu3,"Programs",stMenu,70,120);    TEXT(bIMenu3,"6",stI24ob,29,120);   KEY(kMenu3,f_OpenSett,200,30,TOUCH,100,120);
+  TEXT(tMenu4,"PID Graph",stMenu,70,150);   TEXT(bIMenu4,"7",stI24ob,29,150);   KEY(kMenu4,f_OpenSett,200,30,TOUCH,100,150);
+  TEXT(tMenu5,"Logs",stMenu,70,180);        TEXT(bIMenu5,":",stI24ob,30,180);   KEY(kMenu5,f_OpenSett,200,30,TOUCH,100,180);
+  TEXT(tMenu6,"Something",stMenu,70,210);   TEXT(bIMenu6,"9",stI24ob,30,210);   KEY(kMenu6,f_OpenSett,200,30,TOUCH,100,210);
+  DRAW(dMenuD2,190,1,sdDiv,5,235);
+  TEXT(tMenu7,"About",stMenu,70,255);       TEXT(bIMenu7,"<",stI24ob,30,255);   KEY(kMenu7,f_OpenAbout,200,30,TOUCH,100,255);
+  
+  HIDE(dMenu,dMenu2,dMenuSh,kMenuSh,tMenur,tMenuT,kMenuT,dMenuD1,dMenuD2,tMenu1,tMenu2,tMenu3,tMenu4,tMenu5,tMenu6,tMenu7);
+  HIDE(bIMenu1,bIMenu2,bIMenu3,bIMenu4,bIMenu5,bIMenu6,bIMenu7,kMenu1,kMenu2,kMenu3,kMenu4,kMenu5,kMenu6,kMenu7);
 }
 
 
@@ -178,8 +179,8 @@ FUNC(f_ErrTher0) {
 }
 
 FUNC(f_OpenMenu) {
-  IF(nMenu=0?[LOAD(nMenu,1);SHOW(dMenu,dMenu2,dMenuSh,kMenuSh,tMenur,tMenuT,kMenuT,dMenuD1,dMenuD2,tMenu1,tMenu2,tMenu3,tMenu4,tMenu5,tMenu6,tMenu0);SHOW(bIMenu1,bIMenu2,bIMenu3,bIMenu4,bIMenu5,bIMenu6,bIMenu0,kMenu1,kMenu2,kMenu3,kMenu4,kMenu5,kMenu6,kMenu0);]:
-    [LOAD(nMenu,0);HIDE(dMenu,dMenu2,dMenuSh,kMenuSh,tMenur,tMenuT,kMenuT,dMenuD1,dMenuD2,tMenu1,tMenu2,tMenu3,tMenu4,tMenu5,tMenu6,tMenu0);HIDE(bIMenu1,bIMenu2,bIMenu3,bIMenu4,bIMenu5,bIMenu6,bIMenu0,kMenu1,kMenu2,kMenu3,kMenu4,kMenu5,kMenu6,kMenu0);]);;
+  IF(nMenu=0?[LOAD(nMenu,1);SHOW(dMenu,dMenu2,dMenuSh,kMenuSh,tMenur,tMenuT,kMenuT,dMenuD1,dMenuD2,tMenu1,tMenu2,tMenu3,tMenu4,tMenu5,tMenu6,tMenu7);SHOW(bIMenu1,bIMenu2,bIMenu3,bIMenu4,bIMenu5,bIMenu6,bIMenu7,kMenu1,kMenu2,kMenu3,kMenu4,kMenu5,kMenu6,kMenu7);]:
+    [LOAD(nMenu,0);HIDE(dMenu,dMenu2,dMenuSh,kMenuSh,tMenur,tMenuT,kMenuT,dMenuD1,dMenuD2,tMenu1,tMenu2,tMenu3,tMenu4,tMenu5,tMenu6,tMenu7);HIDE(bIMenu1,bIMenu2,bIMenu3,bIMenu4,bIMenu5,bIMenu6,bIMenu7,kMenu1,kMenu2,kMenu3,kMenu4,kMenu5,kMenu6,kMenu7);]);;
 }
 
 FUNC(f_OpenRMenu) {
@@ -187,8 +188,20 @@ FUNC(f_OpenRMenu) {
     [LOAD(nRMenu,0);HIDE(dRMenu,dRMenu2,tRMenut,tRMenul,tRMenur,tRMenub,tRMenu1,tRMenu2,tRMenu3,tRMenu4,bIRMenu1,bIRMenu2,bIRMenu3,bIRMenu4,kRMenu1,kRMenu2,kRMenu3,kRMenu4);]);;
 }
 
+FUNC(f_OpenSett) {
+  LOAD(nCurPg,1);
+  RUN(_sf_Open);
+  RUN(f_OpenMenu);
+}
+
 FUNC(f_OpenThemes) {
   LOAD(nCurPg,2);
-  RUN(_cOpen);
+  RUN(_cf_Open);
   RUN(f_OpenMenu);
+}
+
+FUNC(f_OpenAbout) {
+//  LOAD(nCurPg,7);
+//  RUN(f_OpenAbout);
+//  RUN(f_OpenMenu);
 }

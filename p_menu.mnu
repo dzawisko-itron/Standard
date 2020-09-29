@@ -1,9 +1,0 @@
-////
-// @FILE:         p_menu.mnu
-// @DESCRIPTION:  Menu page
-//
-
-PAGE(p_Menu, spStd) {
-
- 
-}
