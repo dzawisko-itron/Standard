@@ -15,12 +15,75 @@
 // Variables
 
 // Popup info window
-VAR(_sninfo,0,U8);
+VAR(_snInfo,0,U8);
+// Number of main options (1-15)
+VAR(_snMNo,0,U8);
+// Main options names
+VAR(_snMNames,\\FF,U8,16,20);
+// Main options icons
+VAR(_snMIcons,\\FF,U8,16,2);
+VAR(_snMRefs,0,U8,16);
 
+VAR(_snMR1,\\FF,U8,3,16,20);
+VAR(_snMR2,\\FF,U8,3,16,20);
+VAR(_snMR3,\\FF,U8,3,16,20);
+VAR(_snMR4,\\FF,U8,3,16,20);
+VAR(_snMR5,\\FF,U8,3,16,20);
+VAR(_snMR6,\\FF,U8,3,16,20);
+VAR(_snMR7,\\FF,U8,3,16,20);
+VAR(_snMR8,\\FF,U8,3,16,20);
+VAR(_snMR9,\\FF,U8,3,16,20);
+VAR(_snMR10,\\FF,U8,3,16,20);
+VAR(_snMR11,\\FF,U8,3,16,20);
+VAR(_snMR12,\\FF,U8,3,16,20);
+VAR(_snMR13,\\FF,U8,3,16,20);
+VAR(_snMR14,\\FF,U8,3,16,20);
+VAR(_snMR15,\\FF,U8,3,16,20);
 
 ////
 // Functions
 
+FUNC(_sf_LoadMain) {
+
+  LOAD(_snMNo,10):
+  
+  LOAD(_snMNames.1,%t% "Targets");    LOAD(_snMIcons.1,%t% "0");  LOAD(_snMRefs.1,1);
+  LOAD(_snMNames.2,%t% "Alarms");     LOAD(_snMIcons.2,%t% "0");  LOAD(_snMRefs.2,2);
+  LOAD(_snMNames.3,%t% "Units");      LOAD(_snMIcons.3,%t% "0");  LOAD(_snMRefs.3,3);
+  LOAD(_snMNames.4,%t% "Calibration");LOAD(_snMIcons.4,%t% "0");  LOAD(_snMRefs.4,4);
+  LOAD(_snMNames.5,%t% "ADC Input");  LOAD(_snMIcons.5,%t% "0");  LOAD(_snMRefs.5,5);
+  LOAD(_snMNames.6,%t% "Inputs");     LOAD(_snMIcons.6,%t% "0");  LOAD(_snMRefs.6,6);
+  LOAD(_snMNames.7,%t% "Outputs");    LOAD(_snMIcons.7,%t% "0");  LOAD(_snMRefs.7,7);
+  LOAD(_snMNames.8,%t% "Date");       LOAD(_snMIcons.8,%t% "0");  LOAD(_snMRefs.8,8);
+  LOAD(_snMNames.9,%t% "Time");       LOAD(_snMIcons.9,%t% "0");  LOAD(_snMRefs.9,9);
+  LOAD(_snMNames.10,%t% "Debug");     LOAD(_snMIcons.10,%t% "0"); LOAD(_snMRefs.10,10);
+  LOAD(_snMNames.11,%t% "");          LOAD(_snMIcons.11,%t% "");  LOAD(_snMRefs.11,11);
+  LOAD(_snMNames.12,%t% "");          LOAD(_snMIcons.12,%t% "");  LOAD(_snMRefs.12,12);
+  LOAD(_snMNames.13,%t% "");          LOAD(_snMIcons.13,%t% "");  LOAD(_snMRefs.13,13);
+  LOAD(_snMNames.14,%t% "");          LOAD(_snMIcons.14,%t% "");  LOAD(_snMRefs.14,14);
+  LOAD(_snMNames.15,%t% "");          LOAD(_snMIcons.15,%t% "");  LOAD(_snMRefs.15,15);
+}
+
+FUNC(_sf_CreateMain) {
+
+  LOAD(_snMNo,10):
+  
+  LOAD(_snMNames.1,%t% "Targets");    LOAD(_snMIcons.1,%t% "0");  LOAD(_snMRefs.1,1);
+  LOAD(_snMNames.2,%t% "Alarms");     LOAD(_snMIcons.2,%t% "0");  LOAD(_snMRefs.2,2);
+  LOAD(_snMNames.3,%t% "Units");      LOAD(_snMIcons.3,%t% "0");  LOAD(_snMRefs.3,3);
+  LOAD(_snMNames.4,%t% "Calibration");LOAD(_snMIcons.4,%t% "0");  LOAD(_snMRefs.4,4);
+  LOAD(_snMNames.5,%t% "ADC Input");  LOAD(_snMIcons.5,%t% "0");  LOAD(_snMRefs.5,5);
+  LOAD(_snMNames.6,%t% "Inputs");     LOAD(_snMIcons.6,%t% "0");  LOAD(_snMRefs.6,6);
+  LOAD(_snMNames.7,%t% "Outputs");    LOAD(_snMIcons.7,%t% "0");  LOAD(_snMRefs.7,7);
+  LOAD(_snMNames.8,%t% "Date");       LOAD(_snMIcons.8,%t% "0");  LOAD(_snMRefs.8,8);
+  LOAD(_snMNames.9,%t% "Time");       LOAD(_snMIcons.9,%t% "0");  LOAD(_snMRefs.9,9);
+  LOAD(_snMNames.10,%t% "Debug");     LOAD(_snMIcons.10,%t% "0"); LOAD(_snMRefs.10,10);
+  LOAD(_snMNames.11,%t% "");          LOAD(_snMIcons.11,%t% "");  LOAD(_snMRefs.11,11);
+  LOAD(_snMNames.12,%t% "");          LOAD(_snMIcons.12,%t% "");  LOAD(_snMRefs.12,12);
+  LOAD(_snMNames.13,%t% "");          LOAD(_snMIcons.13,%t% "");  LOAD(_snMRefs.13,13);
+  LOAD(_snMNames.14,%t% "");          LOAD(_snMIcons.14,%t% "");  LOAD(_snMRefs.14,14);
+  LOAD(_snMNames.15,%t% "");          LOAD(_snMIcons.15,%t% "");  LOAD(_snMRefs.15,15);
+}
 FUNC(_sf_Back) {
 
   LOAD(nCurPg,0);
@@ -34,8 +97,8 @@ FUNC(_sf_Open) {
 
 FUNC(_sf_Info) {
 
-  IF(_sninfo=0?[LOAD(_sninfo,1);SHOW(_sdPopSh,_sdRMenu,_sdRMenu2,_stRMenut,_stRMenul,_stRMenur,_stRMenub,_stRMenu1,_stRMenu2);]:
-    [LOAD(_sninfo,0);HIDE(_sdPopSh,_sdRMenu,_sdRMenu2,_stRMenut,_stRMenul,_stRMenur,_stRMenub,_stRMenu1,_stRMenu2);]);;
+  IF(_snInfo=0?[LOAD(_snInfo,1);SHOW(_sdPopSh,_sdRMenu,_sdRMenu2,_stRMenut,_stRMenul,_stRMenur,_stRMenub,_stRMenu1,_stRMenu2);]:
+    [LOAD(_snInfo,0);HIDE(_sdPopSh,_sdRMenu,_sdRMenu2,_stRMenut,_stRMenul,_stRMenur,_stRMenub,_stRMenu1,_stRMenu2);]);;
 }
 
 ////
@@ -68,7 +131,7 @@ PAGE(_sp_Settings, spStd) {
 //  DRAW(_sdL5,478,41,sdBoxL,1,230);  
   
   // List 5 rows, 2 columns
-//  DRAW(_sdL1,238,41,sdBoxL,1,62);     
+//  DRAW(_sdL1,238,41,sdBoxL,1,62);       
 //  DRAW(_sdL2,238,41,sdBoxL,1,104);     
 //  DRAW(_sdL3,238,41,sdBoxL,1,146);  
 //  DRAW(_sdL4,238,41,sdBoxL,1,188);  
@@ -81,23 +144,23 @@ PAGE(_sp_Settings, spStd) {
 //  DRAW(_sdL10,239,41,sdBoxL,240,230);
   
   // List 5 rows, 3 columns
-  DRAW(_sdL1,158,41,sdBoxL,1,62);     
-  DRAW(_sdL2,158,41,sdBoxL,1,104);     
-  DRAW(_sdL3,158,41,sdBoxL,1,146);  
-  DRAW(_sdL4,158,41,sdBoxL,1,188);  
-  DRAW(_sdL5,158,41,sdBoxL,1,230);  
+//  DRAW(_sdL1,158,41,sdBoxL,1,62);       DRAW(_sdL1,158,41,sdBoxL,1,62);
+//  DRAW(_sdL2,158,41,sdBoxL,1,104);      DRAW(_sdL1,158,41,sdBoxL,1,62);
+//  DRAW(_sdL3,158,41,sdBoxL,1,146);      DRAW(_sdL1,158,41,sdBoxL,1,62);
+//  DRAW(_sdL4,158,41,sdBoxL,1,188);      DRAW(_sdL1,158,41,sdBoxL,1,62);
+//  DRAW(_sdL5,158,41,sdBoxL,1,230);      DRAW(_sdL1,158,41,sdBoxL,1,62);
   
-  DRAW(_sdL6,159,41,sdBoxL,160,62);
-  DRAW(_sdL7,159,41,sdBoxL,160,104); 
-  DRAW(_sdL8,159,41,sdBoxL,160,146);
-  DRAW(_sdL9,159,41,sdBoxL,160,188);
-  DRAW(_sdL10,159,41,sdBoxL,160,230);  
+//  DRAW(_sdL6,159,41,sdBoxL,160,62);     DRAW(_sdL1,158,41,sdBoxL,1,62);
+//  DRAW(_sdL7,159,41,sdBoxL,160,104);    DRAW(_sdL1,158,41,sdBoxL,1,62);
+//  DRAW(_sdL8,159,41,sdBoxL,160,146);    DRAW(_sdL1,158,41,sdBoxL,1,62);
+//  DRAW(_sdL9,159,41,sdBoxL,160,188);    DRAW(_sdL1,158,41,sdBoxL,1,62);
+//  DRAW(_sdL10,159,41,sdBoxL,160,230);   DRAW(_sdL1,158,41,sdBoxL,1,62);
   
-  DRAW(_sdL11,159,41,sdBoxL,320,62);
-  DRAW(_sdL12,159,41,sdBoxL,320,104); 
-  DRAW(_sdL13,159,41,sdBoxL,320,146);
-  DRAW(_sdL14,159,41,sdBoxL,320,188);
-  DRAW(_sdL15,159,41,sdBoxL,320,230);  
+//  DRAW(_sdL11,159,41,sdBoxL,320,62);
+//  DRAW(_sdL12,159,41,sdBoxL,320,104); 
+//  DRAW(_sdL13,159,41,sdBoxL,320,146);
+//  DRAW(_sdL14,159,41,sdBoxL,320,188);
+//  DRAW(_sdL15,159,41,sdBoxL,320,230);  
   
   // Info window
   DRAW(_sdPopSh,480,272,sdBoxSh,0,0);
@@ -112,3 +175,6 @@ PAGE(_sp_Settings, spStd) {
   HIDE(_sdPopSh,_sdRMenu,_sdRMenu2,_stRMenut,_stRMenul,_stRMenur,_stRMenub,_stRMenu1,_stRMenu2);
  
 }
+
+
+

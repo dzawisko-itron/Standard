@@ -67,7 +67,7 @@ VAR(_ce16,15,U8);
 VAR(_ce24,16,U8);
 VAR(_ce30,20,U8);
 // Popup info window
-VAR(_cninfo,0,U8);
+VAR(_cnInfo,0,U8);
 // Temporary variables
 VAR(_cttmp,"",TXT);
 
@@ -636,8 +636,8 @@ FUNC(_cf_ChgSec1) {
 
 FUNC(_cf_Info) {
 
-  IF(_cninfo=0?[LOAD(_cninfo,1);SHOW(_cdPopSh,_cdRMenu,_cdRMenu2,_ctRMenut,_ctRMenul,_ctRMenur,_ctRMenub,_ctRMenu1,_ctRMenu2);]:
-    [LOAD(_cninfo,0);HIDE(_cdPopSh,_cdRMenu,_cdRMenu2,_ctRMenut,_ctRMenul,_ctRMenur,_ctRMenub,_ctRMenu1,_ctRMenu2);]);;
+  IF(_cnInfo=0?[LOAD(_cnInfo,1);SHOW(_cdPopSh,_cdRMenu,_cdRMenu2,_ctRMenut,_ctRMenul,_ctRMenur,_ctRMenub,_ctRMenu1,_ctRMenu2);]:
+    [LOAD(_cnInfo,0);HIDE(_cdPopSh,_cdRMenu,_cdRMenu2,_ctRMenut,_ctRMenul,_ctRMenur,_ctRMenub,_ctRMenu1,_ctRMenu2);]);;
 }
 
 ////
