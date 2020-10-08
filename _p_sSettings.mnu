@@ -170,16 +170,16 @@ FUNC(_sf_CreateS3) { SHOW(_sp_SubMenu3); }
 FUNC(_sf_LoadMain) {
 
   LOAD(_snMNo,10);
-  LOAD(_snMNames.1,%t% "Targets & Alarms"); LOAD(_snMIcons.1,%t% "0");  LOAD(_snMRefs.1,1);
-  LOAD(_snMNames.2,%t% "Units");            LOAD(_snMIcons.2,%t% "0");  LOAD(_snMRefs.2,2);
-  LOAD(_snMNames.3,%t% "Calibration");      LOAD(_snMIcons.3,%t% "0");  LOAD(_snMRefs.3,3);
-  LOAD(_snMNames.4,%t% "ADC Inputs");       LOAD(_snMIcons.4,%t% "0");  LOAD(_snMRefs.4,4);
-  LOAD(_snMNames.5,%t% "GP Inputs");        LOAD(_snMIcons.5,%t% "0");  LOAD(_snMRefs.5,5);
-  LOAD(_snMNames.6,%t% "GP Outputs");       LOAD(_snMIcons.6,%t% "0");  LOAD(_snMRefs.6,6);
-  LOAD(_snMNames.7,%t% "PID & Thermostat"); LOAD(_snMIcons.7,%t% "0");  LOAD(_snMRefs.7,7);
-  LOAD(_snMNames.8,%t% "RTC Date");         LOAD(_snMIcons.8,%t% "0");  LOAD(_snMRefs.8,8);
-  LOAD(_snMNames.9,%t% "RTC Time");         LOAD(_snMIcons.9,%t% "0");  LOAD(_snMRefs.9,9);
-  LOAD(_snMNames.10,%t% "Debug Options");   LOAD(_snMIcons.10,%t% "0"); LOAD(_snMRefs.10,10);
+  LOAD(_snMNames.1,%t% "Targets & Alarms"); LOAD(_snMIcons.1,%t% "C");  LOAD(_snMRefs.1,1);
+  LOAD(_snMNames.2,%t% "Units");            LOAD(_snMIcons.2,%t% "D");  LOAD(_snMRefs.2,2);
+  LOAD(_snMNames.3,%t% "Calibration");      LOAD(_snMIcons.3,%t% "E");  LOAD(_snMRefs.3,3);
+  LOAD(_snMNames.4,%t% "ADC Inputs");       LOAD(_snMIcons.4,%t% "F");  LOAD(_snMRefs.4,4);
+  LOAD(_snMNames.5,%t% "GP Inputs");        LOAD(_snMIcons.5,%t% "H");  LOAD(_snMRefs.5,5);
+  LOAD(_snMNames.6,%t% "GP Outputs");       LOAD(_snMIcons.6,%t% "H");  LOAD(_snMRefs.6,6);
+  LOAD(_snMNames.7,%t% "PID & Thermostat"); LOAD(_snMIcons.7,%t% "I");  LOAD(_snMRefs.7,7);
+  LOAD(_snMNames.8,%t% "RTC Date");         LOAD(_snMIcons.8,%t% "J");  LOAD(_snMRefs.8,8);
+  LOAD(_snMNames.9,%t% "RTC Time");         LOAD(_snMIcons.9,%t% "K");  LOAD(_snMRefs.9,9);
+  LOAD(_snMNames.10,%t% "Debug Options");   LOAD(_snMIcons.10,%t% "L"); LOAD(_snMRefs.10,10);
   LOAD(_snMNames.11,%t% "");          LOAD(_snMIcons.11,%t% "");  LOAD(_snMRefs.11,11);
   LOAD(_snMNames.12,%t% "");          LOAD(_snMIcons.12,%t% "");  LOAD(_snMRefs.12,12);
   LOAD(_snMNames.13,%t% "");          LOAD(_snMIcons.13,%t% "");  LOAD(_snMRefs.13,13);
