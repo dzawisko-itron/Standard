@@ -76,6 +76,7 @@ VAR(_cttmp,"",TXT);
 // Styles
 
 // Keys
+STYLE(skTL,      key) {type=touch;action=D;currel=TL;}
 // Pages
 STYLE(spStd,    page) {back=0;}
 // Drawings
@@ -109,6 +110,7 @@ STYLE(stBos,    text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
 STYLE(stBp,     text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
 STYLE(stBs,     text) {font=fnRm14;col=0;currel=CC;xSpace=2;}
 STYLE(stMenu,   text) {font=fnRr14;col=0;currel=CL;xSpace=1;}
+STYLE(stMenuL,  text) {font=fnRr14;col=0;currel=CL;xSpace=1;}
 STYLE(stMenuT,  text) {font=fnRm20;col=0;currel=CL;xSpace=1;}
 STYLE(stPopT,   text) {font=fnRm14;col=0;currel=CL;xSpace=1;}
 STYLE(stPop,    text) {font=fnRr14;col=0;currel=CL;xSpace=0;maxlen=128;}
@@ -472,6 +474,7 @@ FUNC(_cf_ReloadT0) {
   LOAD(stI24b.col,_conprim._ct);
   // menu text
   LOAD(stMenu.col,_consurf._ct);LOAD(stMenu.opacity,_chemp);
+  LOAD(stMenuL.col,_consurf._ct);LOAD(stMenuL.opacity,_cmemp);
   LOAD(stMenuT.col,_conbckg._ct);LOAD(stMenuT.opacity,_chemp);
   LOAD(stI24ob.col,_consurf._ct);LOAD(stI24ob.opacity,_cmemp);
   // popup
@@ -510,6 +513,7 @@ FUNC(_cf_ReloadT1) {
   LOAD(stI24b.col,_conbckg._ct);
   // menu text
   LOAD(stMenu.col,_consurf._ct);LOAD(stMenu.opacity,_chemp);
+  LOAD(stMenuL.col,_consurf._ct);LOAD(stMenuL.opacity,_cmemp);
   LOAD(stMenuT.col,_conbckg._ct);LOAD(stMenuT.opacity,_chemp);
   LOAD(stI24ob.col,_consurf._ct);LOAD(stI24ob.opacity,_ciemp);
   // popup
@@ -547,6 +551,7 @@ FUNC(_cf_ReloadT2) {
   LOAD(stI24b.col,_cprim._ct);
   // menu text
   LOAD(stMenu.col,_cprim._ct);  LOAD(stMenu.opacity,_csemp);
+  LOAD(stMenuL.col,_consurf._ct);LOAD(stMenuL.opacity,_chemp);
   LOAD(stMenuT.col,_cprim._ct); LOAD(stMenuT.opacity,_csemp);
   LOAD(stI24ob.col,_cprim._ct); LOAD(stI24ob.opacity,_csemp);
   // popup
@@ -573,7 +578,7 @@ FUNC(_cf_ReloadT2) {
 }
 
 FUNC(_cf_Back) {
-
+  // nCurPg is from main appliacation, please adjust that to your app
   LOAD(nCurPg,0);
   SHOW(p_Main);
 }

@@ -29,10 +29,13 @@ FUNC(f_InitInt) {
 }
 
 FUNC(f_InitStart) {
-
+  // Load colour themes
   RUN(_cf_LoadCol);
   RUN(_cf_ReloadCol);
   RUN(_cf_ReloadThe);
+  // Load menu
+  RUN(_sf_LoadSubs);
+  IF(_snEeprom=0?_sf_LoadSubsD);
 
   SHOW(p_Splash);
   
